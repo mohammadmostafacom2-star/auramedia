@@ -205,7 +205,8 @@ a:hover {
    قسم الترحيب (Hero Section) المطور
    ========================================= */
 .hero {
-    padding: 100px 20px;
+    /* تم تقليل الفراغ العلوي من 100px إلى 50px لتقريب المحتوى من الهيدر */
+    padding: 50px 20px 60px;
     background: linear-gradient(135deg, #f0f4ff 0%, var(--white) 100%);
     position: relative;
     overflow: hidden;
@@ -277,8 +278,10 @@ a:hover {
 }
 
 .hero-image img {
-    max-width: 100%;
-    height: auto;
+    /* تم تصغير الصورة لتبدو متناسقة ولا تطغى على الشاشة */
+    max-width: 80%;
+    max-height: 480px;
+    object-fit: contain;
     filter: drop-shadow(0 20px 30px rgba(76, 29, 149, 0.15));
     position: relative;
     z-index: 2;
@@ -595,6 +598,11 @@ a:hover {
         height: 55px;
     }
 
+    .hero {
+        /* تقليل الفراغ العلوي للموبايل أيضاً */
+        padding: 40px 15px 50px;
+    }
+
     .hero-content {
         flex-direction: column;
         text-align: center;
@@ -615,6 +623,11 @@ a:hover {
         margin-right: auto;
     }
     
+    .hero-image img {
+        /* السماح للصورة بأخذ مساحة أكبر قليلاً في الموبايل لأنها فوق بعضها */
+        max-width: 90%;
+    }
+
     .section-title {
         font-size: 2rem;
         margin-bottom: 40px;
