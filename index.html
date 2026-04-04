@@ -57,25 +57,30 @@
     </aside>
 
     <main>
-        <!-- قسم الترحيب (Hero Section) -->
+        <!-- قسم الترحيب (Hero Section) المطور -->
         <section class="hero">
-            <div class="container">
-                <h1>شغّل إعلانك على فيسبوك وإنستغرام بسهولة مع <span>Aura Media</span></h1>
-                <p>شاهد التسعير من القائمة، اختر باقتك المناسبة، ادفع ثم قدم طلبك الآن.</p>
-                <a href="order.html" class="btn-primary">إبدأ الآن</a>
+            <div class="container hero-content">
+                <div class="hero-text animate-on-scroll">
+                    <h1>شغّل إعلانك على فيسبوك وإنستغرام بسهولة مع <span>Aura Media</span></h1>
+                    <p>شاهد التسعير من القائمة، اختر باقتك المناسبة، ادفع ثم قدم طلبك الآن بخطوات بسيطة وسريعة.</p>
+                    <a href="order.html" class="btn-primary">إبدأ الآن</a>
+                </div>
+                <div class="hero-image animate-on-scroll">
+                    <!-- يمكنك لاحقاً وضع صورة 3D أو رسمة تعبيرية هنا في مجلد الصور -->
+                    <img src="assets/images/hero-illustration.png" alt="Aura Media" onerror="this.style.display='none'">
+                </div>
             </div>
         </section>
 
         <!-- قسم خطوات العمل -->
         <section id="how-it-works" class="steps-section">
             <div class="container">
-                <h2 class="section-title">خطوات العمل</h2>
+                <h2 class="section-title animate-on-scroll">خطوات العمل</h2>
                 <div class="steps-grid">
                     
                     <!-- الخطوة 1 -->
-                    <div class="step-card">
+                    <div class="step-card animate-on-scroll">
                         <div class="step-icon">
-                            <!-- أيقونة محفظة -->
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
                         </div>
                         <h3>حوّل المال</h3>
@@ -83,9 +88,8 @@
                     </div>
 
                     <!-- الخطوة 2 -->
-                    <div class="step-card">
+                    <div class="step-card animate-on-scroll">
                         <div class="step-icon">
-                            <!-- أيقونة صفحة -->
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                         </div>
                         <h3>امتلاك صفحة عامة أو انشائها</h3>
@@ -94,9 +98,8 @@
                     </div>
 
                     <!-- الخطوة 3 -->
-                    <div class="step-card">
+                    <div class="step-card animate-on-scroll">
                         <div class="step-icon">
-                            <!-- أيقونة مشرف -->
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                         </div>
                         <h3>إضف مشرفاً من Aura Media</h3>
@@ -105,9 +108,8 @@
                     </div>
 
                     <!-- الخطوة 4 -->
-                    <div class="step-card">
+                    <div class="step-card animate-on-scroll">
                         <div class="step-icon">
-                            <!-- أيقونة إرسال -->
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                         </div>
                         <h3>إرسال طلبك</h3>
@@ -121,8 +123,8 @@
         <!-- قسم الأسئلة الشائعة -->
         <section id="faq" class="faq-section">
             <div class="container">
-                <h2 class="section-title">الأسئلة الشائعة – Aura Media</h2>
-                <div class="accordion">
+                <h2 class="section-title animate-on-scroll">الأسئلة الشائعة – Aura Media</h2>
+                <div class="accordion animate-on-scroll">
                     
                     <div class="accordion-item">
                         <button class="accordion-header">ما نوع المحتوى الذي يمكن تمويله؟ <span class="icon">+</span></button>
@@ -177,6 +179,13 @@
             </div>
         </section>
     </main>
+
+    <!-- شكل الموجة الفاصلة قبل الفوتر -->
+    <div class="footer-wave">
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#0f172a" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,133.3C672,139,768,181,864,192C960,203,1056,181,1152,154.7C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
 
     <!-- التذييل (Footer) -->
     <footer class="footer">
