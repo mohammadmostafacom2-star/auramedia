@@ -9,8 +9,8 @@
     --text-muted: #64748b; /* لون النصوص الفرعية */
     --white: #ffffff;
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
 }
 
 /* =========================================
@@ -47,7 +47,7 @@ a:hover {
 }
 
 /* =========================================
-   الرأس (Header) - بالقياسات الأصلية
+   الرأس (Header) - قياساتك الأصلية 100%
    ========================================= */
 .header {
     background-color: var(--white);
@@ -102,13 +102,13 @@ a:hover {
     width: 100%;
 }
 
-/* زر القائمة (مخفي في الشاشات الكبيرة) */
+/* زر القائمة */
 .menu-btn {
     background: none;
     border: none;
     color: var(--primary-color);
     cursor: pointer;
-    display: none;
+    display: none; /* مخفي في اللابتوب */
     align-items: center;
     justify-content: center;
     transition: var(--transition);
@@ -202,10 +202,10 @@ a:hover {
 }
 
 /* =========================================
-   قسم الترحيب (Hero Section) - بالقياسات الأصلية
+   قسم الترحيب (Hero Section) المطور
    ========================================= */
 .hero {
-    padding: 80px 20px; /* تمت إعادتها للقياس الأصلي */
+    padding: 100px 20px;
     background: linear-gradient(135deg, #f0f4ff 0%, var(--white) 100%);
     position: relative;
     overflow: hidden;
@@ -224,10 +224,10 @@ a:hover {
 }
 
 .hero-text h1 {
-    font-size: 2.8rem; /* تمت إعادتها للقياس الأصلي */
+    font-size: 3.2rem;
     font-weight: 800;
     margin-bottom: 20px;
-    line-height: 1.4;
+    line-height: 1.3;
     color: var(--text-dark);
 }
 
@@ -241,7 +241,7 @@ a:hover {
     font-size: 1.2rem;
     color: var(--text-muted);
     margin-bottom: 40px;
-    max-width: 600px; /* تمت إعادتها للقياس الأصلي */
+    max-width: 550px;
 }
 
 .hero-image {
@@ -267,28 +267,28 @@ a:hover {
     display: inline-block;
     background: var(--gradient);
     color: var(--white);
-    padding: 15px 40px;
+    padding: 15px 45px;
     border-radius: 12px;
     font-size: 1.2rem;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
     transition: var(--transition);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
     color: var(--white);
 }
 
 /* =========================================
-   العناوين المشتركة للأقسام - بالقياسات الأصلية
+   العناوين المشتركة للأقسام
    ========================================= */
 .section-title {
     text-align: center;
-    font-size: 2.2rem; /* تمت إعادتها للقياس الأصلي */
+    font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 50px; /* تمت إعادتها للقياس الأصلي */
+    margin-bottom: 60px;
     color: var(--text-dark);
     position: relative;
 }
@@ -297,7 +297,7 @@ a:hover {
    قسم خطوات العمل
    ========================================= */
 .steps-section {
-    padding: 80px 0; /* تمت إعادتها للقياس الأصلي */
+    padding: 100px 0;
     background: var(--bg-color);
 }
 
@@ -321,8 +321,8 @@ a:hover {
 }
 
 .step-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(76, 29, 149, 0.1);
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(76, 29, 149, 0.1);
     border-top-color: var(--secondary-color);
 }
 
@@ -335,7 +335,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 25px;
     transition: var(--transition);
 }
 
@@ -367,7 +367,7 @@ a:hover {
    قسم الأسئلة الشائعة (FAQ)
    ========================================= */
 .faq-section {
-    padding: 80px 0; /* تمت إعادتها للقياس الأصلي */
+    padding: 80px 0 40px;
     background: var(--white);
 }
 
@@ -388,10 +388,10 @@ a:hover {
 .accordion-header {
     width: 100%;
     text-align: right;
-    padding: 20px;
+    padding: 20px 25px;
     background: transparent;
     border: none;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-dark);
     cursor: pointer;
@@ -420,7 +420,7 @@ a:hover {
 }
 
 .accordion-content p {
-    padding: 20px;
+    padding: 20px 25px;
     color: var(--text-muted);
     font-weight: 600;
     line-height: 1.8;
@@ -428,7 +428,7 @@ a:hover {
 
 .accordion-item.active {
     border-color: var(--secondary-color);
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
 }
 
 .accordion-item.active .accordion-header {
@@ -526,7 +526,7 @@ a:hover {
 }
 
 /* =========================================
-   استعلامات الوسائط (الهواتف المحمولة) - بالقياسات الأصلية
+   استعلامات الوسائط (الهواتف المحمولة)
    ========================================= */
 @media (max-width: 768px) {
     .desktop-nav {
@@ -537,12 +537,12 @@ a:hover {
         display: flex;
     }
 
+    /* قياساتك الأصلية 100% للموبايل */
     .header {
-        padding: 8px 15px; /* تمت إعادتها للقياس الأصلي */
+        padding: 8px 15px;
     }
-    
     .logo img {
-        height: 55px; /* تمت إعادتها للقياس الأصلي */
+        height: 55px;
     }
 
     .hero-content {
@@ -556,17 +556,17 @@ a:hover {
     }
 
     .hero-text h1 {
-        font-size: 2rem; /* تمت إعادتها للقياس الأصلي */
+        font-size: 2.2rem;
     }
     
     .hero-text p {
-        font-size: 1rem; /* تمت إعادتها للقياس الأصلي */
+        font-size: 1rem;
         margin-left: auto;
         margin-right: auto;
     }
     
     .section-title {
-        font-size: 1.8rem; /* تمت إعادتها للقياس الأصلي */
+        font-size: 2rem;
         margin-bottom: 40px;
     }
     
