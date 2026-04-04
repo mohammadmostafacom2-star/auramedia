@@ -47,7 +47,7 @@ a:hover {
 }
 
 /* =========================================
-   الرأس (Header) - قياساتك الأصلية 100%
+   الرأس (Header)
    ========================================= */
 .header {
     background-color: var(--white);
@@ -202,10 +202,10 @@ a:hover {
 }
 
 /* =========================================
-   قسم الترحيب (Hero Section) المطور
+   قسم الترحيب (Hero Section)
    ========================================= */
 .hero {
-    padding: 50px 20px 60px;
+    padding: 50px 20px 30px; /* تم تقليل المسافة السفلية */
     background: linear-gradient(135deg, #f0f4ff 0%, var(--white) 100%);
     position: relative;
     overflow: hidden;
@@ -345,7 +345,7 @@ a:hover {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 60px;
+    margin-bottom: 40px; /* تم تقليل المسافة السفلية من 60 إلى 40 */
     color: var(--text-dark);
     position: relative;
 }
@@ -354,7 +354,7 @@ a:hover {
    قسم خطوات العمل
    ========================================= */
 .steps-section {
-    padding: 100px 0;
+    padding: 60px 0; /* تم تقليل المسافة من 100 إلى 60 */
     background: var(--bg-color);
 }
 
@@ -424,7 +424,7 @@ a:hover {
    قسم الأسئلة الشائعة (FAQ)
    ========================================= */
 .faq-section {
-    padding: 80px 0 40px;
+    padding: 60px 0 40px; /* تم تقليل المسافة العلوية من 80 إلى 60 */
     background: var(--white);
     position: relative; /* ضروري لاحتواء الشبكة التقنية */
     overflow: hidden; /* لمنع خروج الشبكة عن القسم */
@@ -632,7 +632,7 @@ a:hover {
     }
 
     .hero {
-        padding: 40px 15px 50px;
+        padding: 40px 15px 30px; /* تقليل المسافة السفلية للموبايل */
     }
 
     .hero-content {
@@ -661,8 +661,18 @@ a:hover {
 
     .section-title {
         font-size: 2rem;
-        margin-bottom: 40px;
+        margin-bottom: 30px; /* تقليل المسافة تحت العنوان للموبايل */
     }
+    
+    /* تقليل المسافات بين الأقسام في الموبايل */
+    .steps-section {
+        padding: 40px 0;
+    }
+    
+    .faq-section {
+        padding: 40px 0 20px;
+    }
+
     .footer-info {
         display: flex;
         flex-direction: column;
