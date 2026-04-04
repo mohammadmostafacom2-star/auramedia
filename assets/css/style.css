@@ -90,7 +90,7 @@ a:hover {
     top: 0;
     left: -100%;
     width: 260px;
-    max-width: 75vw;
+    max-width: 60vw;
     height: 100vh;
     background-color: var(--white);
     box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
