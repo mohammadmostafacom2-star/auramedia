@@ -56,3 +56,33 @@ accordionHeaders.forEach(header => {
         }
     });
 });
+
+// =========================================
+// حركات الظهور عند التمرير (Scroll Animations)
+// =========================================
+// إعدادات المراقب (يتم التفعيل عندما يظهر 15% من العنصر في الشاشة)
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+};
+
+// إنشاء المراقب
+const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        // إذا دخل العنصر في مجال الرؤية
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // إيقاف مراقبة العنصر بعد ظهوره (لكي تحدث الحركة مرة واحدة فقط)
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// تطبيق المراقب على جميع العناصر التي تحمل كلاس animate-on-scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    animatedElements.forEach(el => {
+        scrollObserver.observe(el);
+    });
+});
