@@ -9,8 +9,8 @@
     --text-muted: #64748b; /* لون النصوص الفرعية */
     --white: #ffffff;
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --transition: all 0.3s ease;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* =========================================
@@ -47,22 +47,23 @@ a:hover {
 }
 
 /* =========================================
-   الرأس (Header) - قياساتك الأصلية 100%
+   رأس الصفحة (Header) - مطابق لملف page-details 
    ========================================= */
 .header {
-    background-color: var(--white);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    padding: 7px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: #ffffff; 
+    padding: 7px 5%; /* نفس قياس العرض والمسافات في صفحة التفاصيل */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
 
-.logo img {
-    height: 80px;
+.logo img { 
+    height: 80px; /* نفس حجم اللوجو وكبره في صفحة التفاصيل */
     object-fit: contain;
     display: block;
 }
@@ -537,7 +538,7 @@ a:hover {
         display: flex;
     }
 
-    /* قياساتك الأصلية 100% للموبايل */
+    /* قياسات الموبايل مطابقة تماماً لملف page-details */
     .header {
         padding: 8px 15px;
     }
