@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروط الخدمة - Aura Media</title>
+    
+    <!-- خطوط جوجل (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ملف التنسيقات العام -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- تنسيقات خاصة بصفحة النصوص -->
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .text-content-section {
+            padding: 60px 0;
+        }
+        .text-card {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .text-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+        .text-card p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .text-card a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+            word-break: break-all;
+        }
+        .text-card a:hover {
+            color: var(--primary-color);
+        }
+        .intro-text {
+            font-size: 1.15rem !important;
+            color: var(--primary-color) !important;
+            font-weight: 800 !important;
+            text-align: center;
+            margin-bottom: 30px !important;
+        }
+        .conclusion-box {
+            background: #f5f3ff;
+            border-right: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .conclusion-box p {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+        
+        @media (max-width: 768px) {
+            .text-card {
+                padding: 30px 20px;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الرأس (Header) -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/aura_logo.png" alt="Aura Media Logo">
+            </a>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="افتح القائمة">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- خلفية داكنة عند فتح القائمة -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- القائمة الجانبية (Sidebar) -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeBtn" aria-label="أغلق القائمة">&times;</button>
+        <nav class="sidebar-nav">
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#how-it-works">طريقة العمل</a>
+            <a href="pricing.html">الباقات والتسعير</a>
+            <a href="order.html">اطلب الآن</a>
+            <a href="terms.html" class="active">شروط الخدمة</a>
+        </nav>
+    </aside>
+
+    <main>
+        <!-- ترويسة الصفحة -->
+        <section class="page-header">
+            <div class="container">
+                <h1>شروط الخدمة</h1>
+                <p>سياسة العمل الخاصة بـ Aura Media</p>
+            </div>
+        </section>
+
+        <!-- محتوى الشروط -->
+        <section class="text-content-section">
+            <div class="container">
+                <div class="text-card">
+                    
+                    <p class="intro-text">مرحباً بكم في "أورا ميديا"<br>لضمان تقديم خدمة سريعة واحترافية لجميع عملائنا، نرجو منكم الاطلاع على سياسة العمل الخاصة بنا:</p>
+
+                    <h3>المحتوى غير المقبول:</h3>
+                    <p>نلتزم بمعايير صارمة، ولذلك نعتذر عن ترويج المجالات التالية نهائياً: (التداول، المراهنات، المحتوى للبالغين وتطبيقات التعارف، إعلانات التوظيف عبر الإنترنت، أو أي محتوى يُشتبه في كونه مضللاً). أي طلب يخص هذه المجالات سيتم رفضه وإيقاف التعامل مع الحساب المُرسل فوراً.</p>
+
+                    <h3>آلية الطلب:</h3>
+                    <p>لقد قمنا بتوفير (شرح نصي وفيديوهات تعليمية) توضح الطريقة الصحيحة لطلب الخدمة. لضمان سرعة التنفيذ، نعتذر عن قبول أو الرد على أي طلبات لا تلتزم بالنموذج المخصص. التزامك بالنموذج يساعدنا على خدمتك بشكل أسرع.</p>
+
+                    <h3>نطاق الخدمة:</h3>
+                    <p>خدماتنا تقتصر حصرياً على تمويل المنشورات ومقاطع "الريلز" على منصتي فيسبوك وإنستغرام.</p>
+                    <p><strong>ملاحظة هامة:</strong> نحن لا نقدم خدمات فك تقييد الحسابات، ولا نقدم استشارات حول سياسات شركة "ميتا". مسؤولية توافق المنشور مع سياسات الإعلانات تقع بالكامل على عاتق العميل، لتجنب رفض إعلانك، يرجى مراجعة سياسات ميتا باللغة العربية عبر الرابط:</p>
+                    <p><a href="https://transparency.meta.com/ar-ar/policies/ad-standards/" target="_blank">https://transparency.meta.com/ar-ar/policies/ad-standards/</a></p>
+                    <p>ونعتذر سلفاً عن عدم الرد على أي استفسارات خارج نطاق خدمة التمويل المباشر.</p>
+
+                    <h3>مدة التنفيذ وسياسة الاسترجاع:</h3>
+                    <p>بعد إرسال طلبك عبر واتساب، سيتم الرد عليك بحالة إعلانك (مقبول أو مرفوض) خلال مدة تتراوح بين 1 إلى 48 ساعة.</p>
+                    <p>في حال تم رفض إعلانك من قبل المنصة، سنقوم بإبلاغك بالسبب المحتمل، وسيتم إعادة أموالك فوراً وحصرياً إلى نفس حساب "شام كاش" الذي تم التحويل منه.</p>
+                    <p>نرحب بعودتك لطلب الخدمة مجدداً بعد أن تقوم بتعديل منشورك بما يتوافق مع سياسات الإعلانات.</p>
+
+                    <h3>قرارات الرفض والمقارنة بجهات أخرى:</h3>
+                    <p>نظام المراجعة في شركة "ميتا" يعتمد على خوارزميات تختلف استجابتها من حساب إعلاني لآخر بناءً على معايير تقنية. لذلك، في حال تم رفض إعلانك لدينا، فإن ملاحظات مثل (لقد تم قبول هذا الإعلان سابقاً) أو (هناك جهة أخرى قامت بتمويله لي بنجاح) لا تُغيّر من نتيجة الرفض لدينا. نحن نلتزم بقرار المنصة على حساباتنا الإعلانية بشكل قاطع لحمايتها وحماية صفحات العملاء، ولا ندخل في نقاشات أو مقارنات. قرار الرفض نهائي، ويرافقه استرجاع فوري لأموالك.</p>
+
+                    <div class="conclusion-box">
+                        <p>إرسالك لطلب التمويل يعني موافقتك الكاملة على هذه البنود.<br>شكراً لتفهمكم واختياركم أورا ميديا.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- التذييل (Footer) -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Aura Media</h3>
+                <p>للتواصل عبر واتساب: <a href="https://wa.me/12345678900" dir="ltr">+1 (234) 567-8900</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">سياسة الخصوصية</a>
+                <a href="terms.html">شروط الخدمة</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>حقوق الملكية: &copy; Aura Media 2026</p>
+        </div>
+    </footer>
+
+    <!-- ملف الجافاسكربت -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
