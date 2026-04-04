@@ -89,7 +89,7 @@ a:hover {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 260px;
+    width: 250px;
     max-width: 60vw;
     height: 100vh;
     background-color: var(--white);
