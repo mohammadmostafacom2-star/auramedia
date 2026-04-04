@@ -181,18 +181,20 @@ if (tiltWrapper && tiltElement) {
 // =========================================
 // تأثير الشبكة التقنية (Particles.js)
 // =========================================
+
+// 1. الشبكة التقنية لقسم الترحيب (Hero) - سريعة وواضحة وتفاعلية
 if (document.getElementById('particles-js')) {
     particlesJS('particles-js', {
         "particles": {
             "number": {
-                "value": 60, // عدد النقاط
+                "value": 60,
                 "density": {
                     "enable": true,
                     "value_area": 800
                 }
             },
             "color": {
-                "value": "#3b82f6" // لون النقاط (أزرق ساطع)
+                "value": "#3b82f6"
             },
             "shape": {
                 "type": "circle",
@@ -202,14 +204,14 @@ if (document.getElementById('particles-js')) {
                 }
             },
             "opacity": {
-                "value": 0.4, // شفافية النقاط
+                "value": 0.4,
                 "random": false,
                 "anim": {
                     "enable": false
                 }
             },
             "size": {
-                "value": 3, // حجم النقاط
+                "value": 3,
                 "random": true,
                 "anim": {
                     "enable": false
@@ -217,14 +219,14 @@ if (document.getElementById('particles-js')) {
             },
             "line_linked": {
                 "enable": true,
-                "distance": 150, // مسافة الربط بين النقاط
-                "color": "#4c1d95", // لون الروابط (بنفسجي داكن)
-                "opacity": 0.2, // شفافية الروابط (خفيفة جداً)
+                "distance": 150,
+                "color": "#4c1d95",
+                "opacity": 0.2,
                 "width": 1.5
             },
             "move": {
                 "enable": true,
-                "speed": 2, // سرعة الحركة
+                "speed": 2,
                 "direction": "none",
                 "random": false,
                 "straight": false,
@@ -240,11 +242,11 @@ if (document.getElementById('particles-js')) {
             "events": {
                 "onhover": {
                     "enable": true,
-                    "mode": "grab" // تأثير جذب الروابط عند مرور الماوس
+                    "mode": "grab"
                 },
                 "onclick": {
                     "enable": true,
-                    "mode": "push" // إضافة نقاط عند النقر
+                    "mode": "push"
                 },
                 "resize": true
             },
@@ -258,6 +260,77 @@ if (document.getElementById('particles-js')) {
                 "push": {
                     "particles_nb": 3
                 }
+            }
+        },
+        "retina_detect": true
+    });
+}
+
+// 2. الشبكة التقنية لقسم الأسئلة الشائعة (FAQ) - خلفية صامتة، بطيئة، وشفافة جداً
+if (document.getElementById('particles-js-faq')) {
+    particlesJS('particles-js-faq', {
+        "particles": {
+            "number": {
+                "value": 60,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#3b82f6"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
+            },
+            "opacity": {
+                "value": 0.08, // أخف بـ 5 مرات من الـ Hero
+                "random": false,
+                "anim": {
+                    "enable": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#4c1d95",
+                "opacity": 0.04, // أخف بـ 5 مرات من الـ Hero
+                "width": 1.5
+            },
+            "move": {
+                "enable": true,
+                "speed": 0.6, // أبطأ بـ 3 مرات من الـ Hero
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": false // إيقاف التفاعل لعدم تشتيت القارئ
+                },
+                "onclick": {
+                    "enable": false // إيقاف التفاعل لعدم تشتيت القارئ
+                },
+                "resize": true
             }
         },
         "retina_detect": true
