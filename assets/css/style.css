@@ -1,1 +1,566 @@
+--- START OF FILE assets/css/style.css ---
 
+/* =========================================
+
+المتغيرات العامة (Variables) والإعدادات
+========================================= /
+:root {
+--primary: #8b5cf6; / بنفسجي فاتح /
+--primary-dark: #4c1d95; / بنفسجي داكن /
+--secondary: #3b82f6; / أزرق ساطع /
+--bg-color: #f8fafc; / خلفية رمادية مائلة للزرقة /
+--text-main: #1e293b; / لون النصوص الرئيسية /
+--text-muted: #64748b; / لون النصوص الفرعية */
+--white: #ffffff;
+--shadow-sm: 0 4px 20px rgba(0,0,0,0.03);
+--shadow-md: 0 10px 30px rgba(0,0,0,0.05);
+--shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
+--gradient: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+}
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Cairo', sans-serif;
+background-color: var(--bg-color);
+color: var(--text-main);
+line-height: 1.6;
+overflow-x: hidden; /* منع التمرير الأفقي */
+}
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+/* =========================================
+2. الأزرار (Buttons)
+========================================= */
+.btn-gradient {
+background: var(--gradient);
+color: var(--white);
+padding: 12px 28px;
+border-radius: 12px;
+font-weight: 700;
+font-size: 1rem;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+display: inline-flex;
+align-items: center;
+justify-content: center;
+border: none;
+cursor: pointer;
+}
+
+.btn-gradient:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+color: var(--white);
+}
+
+.btn-large {
+padding: 16px 45px;
+font-size: 1.25rem;
+border-radius: 14px;
+}
+
+/* =========================================
+3. الشريط العلوي (Navbar)
+========================================= */
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: var(--white);
+padding: 10px 5%;
+box-shadow: var(--shadow-sm);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.logo-img {
+height: 65px;
+object-fit: contain;
+display: block;
+}
+
+.fallback-logo {
+color: var(--primary-dark);
+font-weight: 800;
+margin: 0;
+font-size: 1.5rem;
+}
+
+.menu-btn {
+background: transparent;
+border: none;
+color: var(--text-main);
+cursor: pointer;
+padding: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: color 0.3s;
+}
+
+.menu-btn:hover {
+color: var(--primary);
+}
+
+/* =========================================
+4. القائمة الجانبية (Sidebar)
+========================================= */
+.sidebar-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(15, 23, 42, 0.6);
+backdrop-filter: blur(3px);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+opacity: 1;
+visibility: visible;
+}
+
+.sidebar {
+position: fixed;
+top: 0;
+left: -320px; /* مخفية خارج الشاشة من اليسار */
+width: 300px;
+height: 100%;
+background: var(--white);
+box-shadow: 5px 0 30px rgba(0,0,0,0.15);
+z-index: 1000;
+transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+display: flex;
+flex-direction: column;
+}
+
+.sidebar.active {
+left: 0; /* تظهر عند التفعيل */
+}
+
+.sidebar-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 25px 20px;
+border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-logo {
+height: 45px;
+}
+
+.close-btn {
+background: none;
+border: none;
+font-size: 2.5rem;
+color: var(--text-muted);
+cursor: pointer;
+line-height: 0.5;
+transition: color 0.3s;
+}
+
+.close-btn:hover {
+color: #ef4444;
+}
+
+.sidebar-links {
+list-style: none;
+padding: 25px 20px;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.sidebar-links a {
+display: block;
+font-size: 1.1rem;
+font-weight: 700;
+color: var(--text-main);
+padding: 12px 15px;
+border-radius: 10px;
+transition: all 0.3s;
+}
+
+.sidebar-links a:hover,
+.sidebar-links a.active {
+background: #f5f3ff;
+color: var(--primary);
+padding-right: 20px; /* حركة بسيطة عند المرور */
+}
+
+.btn-sidebar-cta {
+background: var(--gradient) !important;
+color: var(--white) !important;
+text-align: center;
+margin-top: 20px;
+box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-sidebar-cta:hover {
+padding-right: 15px !important; /* إلغاء الحركة الجانبية لهذا الزر */
+transform: translateY(-2px);
+}
+
+/* =========================================
+5. القسم البطل (Hero Section)
+========================================= */
+.hero-section {
+text-align: center;
+padding: 100px 20px 80px;
+position: relative;
+}
+
+.hero-title {
+font-size: 3.5rem;
+font-weight: 800;
+margin-bottom: 25px;
+line-height: 1.3;
+color: var(--text-main);
+}
+
+.hero-title span {
+background: var(--gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+font-size: 1.25rem;
+color: var(--text-muted);
+margin-bottom: 45px;
+font-weight: 600;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* =========================================
+6. قسم خطوات العمل (How it works)
+========================================= */
+.steps-section {
+padding: 60px 0 80px;
+}
+
+.section-title {
+text-align: center;
+font-size: 2.5rem;
+font-weight: 800;
+margin-bottom: 50px;
+color: var(--text-main);
+}
+
+.steps-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 30px;
+}
+
+.step-card {
+background: var(--white);
+padding: 40px 25px;
+border-radius: 20px;
+text-align: center;
+box-shadow: var(--shadow-md);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: 1px solid rgba(0,0,0,0.02);
+position: relative;
+overflow: hidden;
+}
+
+.step-card:hover {
+transform: translateY(-10px);
+box-shadow: var(--shadow-hover);
+border-color: #e9d5ff;
+}
+
+.step-icon {
+width: 90px;
+height: 90px;
+margin: 0 auto 25px;
+background: #f5f3ff;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--primary);
+transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+transform: scale(1.1);
+background: var(--gradient);
+color: var(--white);
+}
+
+.step-title {
+font-size: 1.4rem;
+font-weight: 800;
+margin-bottom: 15px;
+color: var(--text-main);
+}
+
+.step-desc {
+color: var(--text-muted);
+font-size: 1rem;
+margin-bottom: 20px;
+font-weight: 600;
+}
+
+.step-link {
+color: var(--secondary);
+font-weight: 700;
+font-size: 0.95rem;
+transition: color 0.3s;
+display: inline-block;
+}
+
+.step-link:hover {
+color: var(--primary-dark);
+text-decoration: underline;
+}
+
+/* =========================================
+7. قسم الأسئلة الشائعة (FAQ Accordion)
+========================================= */
+.faq-section {
+padding: 60px 0 100px;
+background-color: var(--white);
+}
+
+.faq-container {
+max-width: 850px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.faq-item {
+background: var(--bg-color);
+border-radius: 16px;
+overflow: hidden;
+border: 1px solid #e2e8f0;
+transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+border-color: #cbd5e1;
+}
+
+.faq-question {
+width: 100%;
+text-align: right;
+padding: 25px;
+background: none;
+border: none;
+font-size: 1.2rem;
+font-weight: 800;
+color: var(--text-main);
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-family: inherit;
+transition: color 0.3s;
+}
+
+.faq-question:hover {
+color: var(--primary-dark);
+}
+
+.faq-icon {
+font-size: 1.8rem;
+color: var(--primary);
+transition: transform 0.4s ease;
+font-weight: 400;
+line-height: 1;
+}
+
+.faq-answer {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease-out;
+}
+
+.faq-answer p {
+padding: 0 25px 25px;
+color: var(--text-muted);
+font-weight: 600;
+line-height: 1.8;
+margin: 0;
+font-size: 1.05rem;
+}
+
+.faq-answer a {
+color: var(--secondary);
+font-weight: 700;
+text-decoration: underline;
+}
+
+/* حالة التفعيل للسؤال (Active State) */
+.faq-item.active {
+background: var(--white);
+border-color: var(--primary);
+box-shadow: var(--shadow-sm);
+}
+
+.faq-item.active .faq-icon {
+transform: rotate(45deg);
+color: #ef4444; /* يتحول للأحمر عند الفتح كعلامة إغلاق */
+}
+
+/* =========================================
+8. تذييل الصفحة (Footer)
+========================================= */
+.footer {
+background: var(--white);
+border-top: 1px solid #e2e8f0;
+padding: 60px 0 20px;
+}
+
+.footer-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 30px;
+margin-bottom: 40px;
+}
+
+.footer-info {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.footer-logo {
+height: 60px;
+object-fit: contain;
+}
+
+.footer-phone {
+font-weight: 800;
+color: var(--primary-dark);
+font-size: 1.3rem;
+direction: ltr; /* لضمان ظهور الرقم بشكل صحيح */
+text-align: right;
+}
+
+.footer-links {
+display: flex;
+gap: 30px;
+}
+
+.footer-links a {
+color: var(--text-muted);
+font-weight: 700;
+font-size: 1.1rem;
+transition: color 0.3s;
+}
+
+.footer-links a:hover {
+color: var(--primary);
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 25px;
+border-top: 1px solid #f1f5f9;
+color: var(--text-muted);
+font-size: 1rem;
+font-weight: 600;
+}
+
+/* =========================================
+9. استعلامات الوسائط (Media Queries) للهواتف
+========================================= */
+@media (max-width: 768px) {
+.navbar {
+padding: 10px 15px;
+}
+
+code
+Code
+download
+content_copy
+expand_less
+.logo-img {
+    height: 50px;
+}
+
+.hero-section {
+    padding: 60px 15px 50px;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 35px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 35px;
+}
+
+.steps-grid {
+    grid-template-columns: 1fr; /* عمود واحد في الهواتف */
+    gap: 20px;
+}
+
+.faq-question {
+    font-size: 1.05rem;
+    padding: 20px 15px;
+}
+
+.faq-answer p {
+    padding: 0 15px 20px;
+    font-size: 0.95rem;
+}
+
+.footer-content {
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-info {
+    align-items: center;
+}
+
+.footer-phone {
+    text-align: center;
+}
+
+.footer-links {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+}
+
+--- END OF FILE assets/css/style.css ---
