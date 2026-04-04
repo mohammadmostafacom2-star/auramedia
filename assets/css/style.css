@@ -1,554 +1,443 @@
 /* =========================================
-   المتغيرات العامة (Variables) والإعدادات
+   المتغيرات العامة (الألوان والخطوط)
    ========================================= */
 :root {
-  --primary: #8b5cf6; /* بنفسجي فاتح */
-  --primary-dark: #4c1d95; /* بنفسجي داكن */
-  --secondary: #3b82f6; /* أزرق ساطع */
-  --bg-color: #f8fafc; /* خلفية رمادية مائلة للزرقة */
-  --text-main: #1e293b; /* لون النصوص الرئيسية */
-  --text-muted: #64748b; /* لون النصوص الفرعية */
-  --white: #ffffff;
-  --shadow-sm: 0 4px 20px rgba(0,0,0,0.03);
-  --shadow-md: 0 10px 30px rgba(0,0,0,0.05);
-  --shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
-  --gradient: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+    --primary-color: #4c1d95; /* بنفسجي داكن */
+    --secondary-color: #3b82f6; /* أزرق ساطع */
+    --bg-color: #f8fafc; /* رمادي فاتح جداً للخلفية */
+    --text-dark: #1e293b; /* لون النصوص الأساسية */
+    --text-muted: #64748b; /* لون النصوص الفرعية */
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
 }
 
+/* =========================================
+   الإعدادات الأساسية
+   ========================================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Cairo', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  line-height: 1.6;
-  overflow-x: hidden; /* منع التمرير الأفقي */
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* =========================================
-   2. الأزرار (Buttons)
+   الرأس (Header)
    ========================================= */
-.btn-gradient {
-  background: var(--gradient);
-  color: var(--white);
-  padding: 12px 28px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
+.header {
+    background-color: var(--white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.btn-gradient:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-  color: var(--white);
-}
-
-.btn-large {
-  padding: 16px 45px;
-  font-size: 1.25rem;
-  border-radius: 14px;
-}
-
-/* =========================================
-   3. الشريط العلوي (Navbar)
-   ========================================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--white);
-  padding: 10px 5%;
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo-img {
-  height: 65px;
-  object-fit: contain;
-  display: block;
-}
-
-.fallback-logo {
-  color: var(--primary-dark);
-  font-weight: 800;
-  margin: 0;
-  font-size: 1.5rem;
+.logo img {
+    height: 60px;
+    object-fit: contain;
 }
 
 .menu-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-main);
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.3s;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
 }
 
 .menu-btn:hover {
-  color: var(--primary);
+    transform: scale(1.1);
 }
 
 /* =========================================
-   4. القائمة الجانبية (Sidebar)
+   القائمة الجانبية (Sidebar)
    ========================================= */
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(3px);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.sidebar-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: -320px;
-  width: 300px;
-  height: 100%;
-  background: var(--white);
-  box-shadow: 5px 0 30px rgba(0,0,0,0.15);
-  z-index: 1000;
-  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  display: flex;
-  flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -300px; /* مخفية خارج الشاشة من اليمين */
+    width: 280px;
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar.active {
-  left: 0;
-}
-
-.sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 20px;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.sidebar-logo {
-  height: 45px;
+    right: 0; /* تظهر عند إضافة كلاس active */
 }
 
 .close-btn {
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  line-height: 0.5;
-  transition: color 0.3s;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: var(--transition);
 }
 
 .close-btn:hover {
-  color: #ef4444;
+    color: #ef4444;
+    transform: rotate(90deg);
 }
 
-.sidebar-links {
-  list-style: none;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.sidebar-links a {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-main);
-  padding: 12px 15px;
-  border-radius: 10px;
-  transition: all 0.3s;
+.sidebar-nav a {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    padding: 12px 15px;
+    border-radius: 10px;
+    transition: var(--transition);
 }
 
-.sidebar-links a:hover,
-.sidebar-links a.active {
-  background: #f5f3ff;
-  color: var(--primary);
-  padding-right: 20px;
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+    padding-right: 25px; /* حركة بسيطة عند التمرير */
 }
 
-.btn-sidebar-cta {
-  background: var(--gradient) !important;
-  color: var(--white) !important;
-  text-align: center;
-  margin-top: 20px;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+/* خلفية التعتيم */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
 }
 
-.btn-sidebar-cta:hover {
-  padding-right: 15px !important;
-  transform: translateY(-2px);
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* =========================================
-   5. القسم البطل (Hero Section)
+   قسم الترحيب (Hero Section)
    ========================================= */
-.hero-section {
-  text-align: center;
-  padding: 100px 20px 80px;
-  position: relative;
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: var(--white);
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 25px;
-  line-height: 1.3;
-  color: var(--text-main);
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
-.hero-title span {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero h1 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  margin-bottom: 45px;
-  font-weight: 600;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+    color: var(--white);
 }
 
 /* =========================================
-   6. قسم خطوات العمل (How it works)
+   العناوين المشتركة للأقسام
+   ========================================= */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: var(--text-dark);
+}
+
+/* =========================================
+   قسم خطوات العمل
    ========================================= */
 .steps-section {
-  padding: 60px 0 80px;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 50px;
-  color: var(--text-main);
+    padding: 80px 0;
 }
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
 .step-card {
-  background: var(--white);
-  padding: 40px 25px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(0,0,0,0.02);
-  position: relative;
-  overflow: hidden;
+    background: var(--white);
+    padding: 40px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.02);
 }
 
 .step-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-hover);
-  border-color: #e9d5ff;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .step-icon {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 25px;
-  background: #f5f3ff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  transition: transform 0.3s ease;
+    width: 80px;
+    height: 80px;
+    background: #f5f3ff;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: var(--transition);
 }
 
 .step-card:hover .step-icon {
-  transform: scale(1.1);
-  background: var(--gradient);
-  color: var(--white);
+    background: var(--gradient);
+    color: var(--white);
 }
 
-.step-title {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 15px;
-  color: var(--text-main);
+.step-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
 }
 
-.step-desc {
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin-bottom: 20px;
-  font-weight: 600;
+.step-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
 }
 
 .step-link {
-  color: var(--secondary);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: color 0.3s;
-  display: inline-block;
-}
-
-.step-link:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: underline;
 }
 
 /* =========================================
-   7. قسم الأسئلة الشائعة (FAQ Accordion)
+   قسم الأسئلة الشائعة (FAQ)
    ========================================= */
 .faq-section {
-  padding: 60px 0 100px;
-  background-color: var(--white);
+    padding: 80px 0;
+    background: var(--white);
 }
 
-.faq-container {
-  max-width: 850px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.faq-item {
-  background: var(--bg-color);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
+.accordion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: var(--transition);
 }
 
-.faq-item:hover {
-  border-color: #cbd5e1;
+.accordion-header {
+    width: 100%;
+    text-align: right;
+    padding: 20px;
+    background: var(--white);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Cairo', sans-serif;
+    transition: var(--transition);
 }
 
-.faq-question {
-  width: 100%;
-  text-align: right;
-  padding: 25px;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--text-main);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: inherit;
-  transition: color 0.3s;
+.accordion-header:hover {
+    background: #f8fafc;
 }
 
-.faq-question:hover {
-  color: var(--primary-dark);
+.accordion-header .icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
 }
 
-.faq-icon {
-  font-size: 1.8rem;
-  color: var(--primary);
-  transition: transform 0.4s ease;
-  font-weight: 400;
-  line-height: 1;
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #f8fafc;
+    transition: max-height 0.4s ease;
 }
 
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
+.accordion-content p {
+    padding: 20px;
+    color: var(--text-muted);
+    font-weight: 600;
+    line-height: 1.8;
 }
 
-.faq-answer p {
-  padding: 0 25px 25px;
-  color: var(--text-muted);
-  font-weight: 600;
-  line-height: 1.8;
-  margin: 0;
-  font-size: 1.05rem;
+/* حالة الفتح للأكورديون */
+.accordion-item.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(76, 29, 149, 0.1);
 }
 
-.faq-answer a {
-  color: var(--secondary);
-  font-weight: 700;
-  text-decoration: underline;
+.accordion-item.active .accordion-header {
+    color: var(--primary-color);
 }
 
-.faq-item.active {
-  background: var(--white);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-sm);
-}
-
-.faq-item.active .faq-icon {
-  transform: rotate(45deg);
-  color: #ef4444;
+.accordion-item.active .icon {
+    transform: rotate(45deg); /* تحويل الزائد إلى ضرب */
 }
 
 /* =========================================
-   8. تذييل الصفحة (Footer)
+   التذييل (Footer)
    ========================================= */
 .footer {
-  background: var(--white);
-  border-top: 1px solid #e2e8f0;
-  padding: 60px 0 20px;
+    background: #0f172a;
+    color: var(--white);
+    padding: 60px 0 20px;
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.footer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.footer-info h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.footer-logo {
-  height: 60px;
-  object-fit: contain;
+.footer-info p {
+    color: #94a3b8;
 }
 
-.footer-phone {
-  font-weight: 800;
-  color: var(--primary-dark);
-  font-size: 1.3rem;
-  direction: ltr;
-  text-align: right;
+.footer-info a {
+    color: #38bdf8;
+    font-weight: 700;
 }
 
 .footer-links {
-  display: flex;
-  gap: 30px;
+    display: flex;
+    gap: 20px;
 }
 
 .footer-links a {
-  color: var(--text-muted);
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: color 0.3s;
+    color: #cbd5e1;
+    font-weight: 600;
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+    color: var(--white);
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 25px;
-  border-top: 1px solid #f1f5f9;
-  color: var(--text-muted);
-  font-size: 1rem;
-  font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+    color: #64748b;
+    font-size: 0.9rem;
 }
 
 /* =========================================
-   9. استعلامات الوسائط (Media Queries) للهواتف
+   استعلامات الوسائط (الهواتف المحمولة)
    ========================================= */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 10px 15px;
-  }
-
-  .logo-img {
-    height: 50px;
-  }
-
-  .hero-section {
-    padding: 60px 15px 50px;
-  }
-
-  .hero-title {
-    font-size: 2.2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.05rem;
-    margin-bottom: 35px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 35px;
-  }
-
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .faq-question {
-    font-size: 1.05rem;
-    padding: 20px 15px;
-  }
-
-  .faq-answer p {
-    padding: 0 15px 20px;
-    font-size: 0.95rem;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-info {
-    align-items: center;
-  }
-
-  .footer-phone {
-    text-align: center;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
 }
