@@ -177,3 +177,89 @@ if (tiltWrapper && tiltElement) {
         }
     });
 }
+
+// =========================================
+// تأثير الشبكة التقنية (Particles.js)
+// =========================================
+if (document.getElementById('particles-js')) {
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 60, // عدد النقاط
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#3b82f6" // لون النقاط (أزرق ساطع)
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
+            },
+            "opacity": {
+                "value": 0.4, // شفافية النقاط
+                "random": false,
+                "anim": {
+                    "enable": false
+                }
+            },
+            "size": {
+                "value": 3, // حجم النقاط
+                "random": true,
+                "anim": {
+                    "enable": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150, // مسافة الربط بين النقاط
+                "color": "#4c1d95", // لون الروابط (بنفسجي داكن)
+                "opacity": 0.2, // شفافية الروابط (خفيفة جداً)
+                "width": 1.5
+            },
+            "move": {
+                "enable": true,
+                "speed": 2, // سرعة الحركة
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab" // تأثير جذب الروابط عند مرور الماوس
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push" // إضافة نقاط عند النقر
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 180,
+                    "line_linked": {
+                        "opacity": 0.6
+                    }
+                },
+                "push": {
+                    "particles_nb": 3
+                }
+            }
+        },
+        "retina_detect": true
+    });
+}
