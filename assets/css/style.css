@@ -212,11 +212,23 @@ a:hover {
     overflow: hidden;
 }
 
+/* حاوية الشبكة التقنية (Particles) */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* خلف المحتوى */
+}
+
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+    position: relative; /* ضروري ليعمل الـ z-index */
+    z-index: 2; /* فوق الشبكة التقنية */
 }
 
 .hero-text {
