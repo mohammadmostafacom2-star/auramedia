@@ -237,6 +237,28 @@ a:hover {
     -webkit-text-fill-color: transparent;
 }
 
+/* تأثير الكتابة التلقائية */
+.typing-text {
+    color: var(--secondary-color) !important;
+    -webkit-text-fill-color: var(--secondary-color) !important;
+    background: none !important;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--text-dark);
+    margin-right: 5px;
+    animation: blink 0.8s infinite;
+    -webkit-text-fill-color: var(--text-dark) !important;
+    background: var(--text-dark) !important;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .hero-text p {
     font-size: 1.2rem;
     color: var(--text-muted);
@@ -244,23 +266,45 @@ a:hover {
     max-width: 550px;
 }
 
+/* إعدادات الصورة وتأثير التتبع 3D */
 .hero-image {
     flex: 1;
     display: flex;
     justify-content: center;
-    animation: float 6s ease-in-out infinite;
+    align-items: center;
+    position: relative;
+    perspective: 1000px; /* ضروري لتأثير الـ 3D */
 }
 
 .hero-image img {
     max-width: 100%;
     height: auto;
     filter: drop-shadow(0 20px 30px rgba(76, 29, 149, 0.15));
+    position: relative;
+    z-index: 2;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+/* تأثير الهالة المضيئة (Aura Glow) */
+.aura-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(76, 29, 149, 0.15) 40%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse-glow 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulse-glow {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
 }
 
 .btn-primary {
@@ -440,7 +484,7 @@ a:hover {
 }
 
 /* =========================================
-   حركات التمرير (Scroll Animations)
+   حركات التمرير (Scroll Animations) والدخول المتدرج
    ========================================= */
 .animate-on-scroll {
     opacity: 0;
@@ -454,6 +498,12 @@ a:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* تأخير زمني للدخول المتدرج */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.3s; }
+.stagger-3 { transition-delay: 0.5s; }
+.stagger-4 { transition-delay: 0.7s; }
 
 /* =========================================
    شكل الموجة والفوتر (Footer)
@@ -577,5 +627,10 @@ a:hover {
     
     .footer-links {
         justify-content: center;
+    }
+    
+    /* إيقاف تأثير التتبع 3D على الموبايل لتوفير الأداء */
+    .hero-image img {
+        transform: none !important;
     }
 }
