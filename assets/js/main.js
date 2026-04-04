@@ -288,7 +288,7 @@ if (document.getElementById('particles-js-faq')) {
                 }
             },
             "opacity": {
-                "value": 0.08, // أخف بـ 5 مرات من الـ Hero
+                "value": 0.16, // أخف بـ 5 مرات من الـ Hero
                 "random": false,
                 "anim": {
                     "enable": false
@@ -305,7 +305,7 @@ if (document.getElementById('particles-js-faq')) {
                 "enable": true,
                 "distance": 150,
                 "color": "#4c1d95",
-                "opacity": 0.04, // أخف بـ 5 مرات من الـ Hero
+                "opacity": 0.08, // أخف بـ 5 مرات من الـ Hero
                 "width": 1.5
             },
             "move": {
