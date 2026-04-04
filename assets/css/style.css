@@ -67,12 +67,49 @@ a:hover {
     display: block;
 }
 
+/* القائمة الأفقية للشاشات الكبيرة (اللابتوب) */
+.desktop-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.desktop-nav a {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* تأثير الخط السفلي عند التمرير (Hover) */
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.desktop-nav a:hover, .desktop-nav a.active {
+    color: var(--primary-color);
+}
+
+.desktop-nav a:hover::after, .desktop-nav a.active::after {
+    width: 100%;
+}
+
+/* زر القائمة (مخفي في الشاشات الكبيرة) */
 .menu-btn {
     background: none;
     border: none;
     color: var(--primary-color);
     cursor: pointer;
-    display: flex;
+    display: none; /* تم الإخفاء هنا */
     align-items: center;
     justify-content: center;
     transition: var(--transition);
@@ -83,7 +120,7 @@ a:hover {
 }
 
 /* =========================================
-   القائمة الجانبية (Sidebar) - تم القضاء على المسافات البيضاء
+   القائمة الجانبية (Sidebar)
    ========================================= */
 .sidebar {
     position: fixed;
@@ -106,7 +143,7 @@ a:hover {
 }
 
 .close-btn {
-    align-self: flex-start; /* زر الإغلاق على اليمين ليكون أقرب للمستخدم */
+    align-self: flex-start;
     background: none;
     border: none;
     font-size: 2.2rem;
@@ -126,17 +163,17 @@ a:hover {
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* تقليل المسافة بين الأزرار لتكون متراصة وأنيقة */
+    gap: 8px;
     width: 100%;
 }
 
 .sidebar-nav a {
     display: block;
-    width: 100%; /* إجبار الزر على ملء العرض بالكامل للقضاء على الفراغ الأبيض */
+    width: 100%;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-dark);
-    padding: 14px 20px; /* مسافات داخلية متوازنة */
+    padding: 14px 20px;
     border-radius: 12px;
     transition: var(--transition);
     text-align: right;
@@ -145,7 +182,6 @@ a:hover {
 .sidebar-nav a:hover, .sidebar-nav a.active {
     background-color: #f5f3ff;
     color: var(--primary-color);
-    /* تم إزالة حركة الإزاحة (transform) لأنها تسبب فراغات غير مرغوبة */
 }
 
 /* خلفية التعتيم */
@@ -428,6 +464,16 @@ a:hover {
    استعلامات الوسائط (الهواتف المحمولة)
    ========================================= */
 @media (max-width: 768px) {
+    /* إخفاء القائمة الأفقية في الموبايل */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* إظهار زر القائمة في الموبايل */
+    .menu-btn {
+        display: flex;
+    }
+
     .header {
         padding: 8px 15px;
     }
