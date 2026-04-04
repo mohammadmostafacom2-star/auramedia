@@ -58,16 +58,20 @@
 
     <main>
         <!-- قسم الترحيب (Hero Section) المطور -->
-        <section class="hero">
+        <section class="hero" id="hero-section">
             <div class="container hero-content">
-                <div class="hero-text animate-on-scroll">
-                    <h1>شغّل إعلانك على فيسبوك وإنستغرام بسهولة مع <span>Aura Media</span></h1>
-                    <p>شاهد التسعير من القائمة، اختر باقتك المناسبة، ادفع ثم قدم طلبك الآن بخطوات بسيطة وسريعة.</p>
-                    <a href="order.html" class="btn-primary">إبدأ الآن</a>
+                <div class="hero-text">
+                    <h1 class="animate-on-scroll stagger-1">
+                        شغّل إعلانك على فيسبوك وإنستغرام <br>
+                        <span class="typing-text" id="typing-text"></span><span class="cursor">|</span><br>
+                        مع <span>Aura Media</span>
+                    </h1>
+                    <p class="animate-on-scroll stagger-2">شاهد التسعير من القائمة، اختر باقتك المناسبة، ادفع ثم قدم طلبك الآن بخطوات بسيطة وسريعة.</p>
+                    <a href="order.html" class="btn-primary animate-on-scroll stagger-3">إبدأ الآن</a>
                 </div>
-                <div class="hero-image animate-on-scroll">
-                    <!-- يمكنك لاحقاً وضع صورة 3D أو رسمة تعبيرية هنا في مجلد الصور -->
-                    <img src="assets/images/hero-illustration.png" alt="Aura Media" onerror="this.style.display='none'">
+                <div class="hero-image animate-on-scroll stagger-4" id="tilt-wrapper">
+                    <div class="aura-glow"></div>
+                    <img src="assets/images/rocket-launch.png" alt="Aura Media Rocket" id="tilt-element" onerror="this.style.display='none'">
                 </div>
             </div>
         </section>
