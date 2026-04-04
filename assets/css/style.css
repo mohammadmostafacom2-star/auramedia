@@ -564,6 +564,23 @@ a:hover {
     -webkit-text-fill-color: transparent;
 }
 
+/* تنسيق شعار الفوتر الجديد */
+.footer-logo {
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    display: block;
+    /* الخدعة السحرية: تجعل الشعار الأسود يظهر باللون الأبيض ليتناسب مع خلفية الفوتر الداكنة */
+    filter: brightness(0) invert(1); 
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+.footer-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .footer-info p {
     color: #94a3b8;
 }
