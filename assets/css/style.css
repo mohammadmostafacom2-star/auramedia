@@ -1,21 +1,19 @@
---- START OF FILE assets/css/style.css ---
-
 /* =========================================
 
 المتغيرات العامة (Variables) والإعدادات
 ========================================= /
-:root {
---primary: #8b5cf6; / بنفسجي فاتح /
---primary-dark: #4c1d95; / بنفسجي داكن /
---secondary: #3b82f6; / أزرق ساطع /
---bg-color: #f8fafc; / خلفية رمادية مائلة للزرقة /
---text-main: #1e293b; / لون النصوص الرئيسية /
---text-muted: #64748b; / لون النصوص الفرعية */
---white: #ffffff;
---shadow-sm: 0 4px 20px rgba(0,0,0,0.03);
---shadow-md: 0 10px 30px rgba(0,0,0,0.05);
---shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
---gradient: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+root {
+primary: #8b5cf6; / بنفسجي فاتح /
+primary-dark: #4c1d95; / بنفسجي داكن /
+secondary: #3b82f6; / أزرق ساطع /
+bg-color: #f8fafc; / خلفية رمادية مائلة للزرقة /
+text-main: #1e293b; / لون النصوص الرئيسية /
+text-muted: #64748b; / لون النصوص الفرعية */
+white: #ffffff;
+shadow-sm: 0 4px 20px rgba(0,0,0,0.03);
+shadow-md: 0 10px 30px rgba(0,0,0,0.05);
+shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
+gradient: linear-gradient(135deg, var(--primary-dark), var(--secondary));
 }
 
 {
