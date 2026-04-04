@@ -82,25 +82,25 @@ a:hover {
 }
 
 /* =========================================
-   القائمة الجانبية (Sidebar)
+   القائمة الجانبية (Sidebar) - معدلة لتظهر من اليسار
    ========================================= */
 .sidebar {
     position: fixed;
     top: 0;
-    right: -300px; /* مخفية خارج الشاشة من اليمين */
+    left: -300px; /* مخفية خارج الشاشة من اليسار */
     width: 280px;
     height: 100vh;
     background-color: var(--white);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1); /* تم عكس الظل ليكون لليمين */
     z-index: 1000;
-    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* الحركة أصبحت لليسار */
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar.active {
-    right: 0; /* تظهر عند إضافة كلاس active */
+    left: 0; /* تظهر عند إضافة كلاس active */
 }
 
 .close-btn {
