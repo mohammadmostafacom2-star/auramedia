@@ -552,7 +552,7 @@ a:hover {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* تم تقليل المسافة السفلية من 40 إلى 20 */
 }
 
 /* جعل حاوية الشعار والأيقونات متمركزة عمودياً */
@@ -566,7 +566,7 @@ a:hover {
 .footer-logo {
     height: 110px;
     object-fit: contain;
-    margin-bottom: 15px; /* تقليل المسافة قليلاً لتقترب الأيقونات من الشعار */
+    margin-bottom: 15px;
     display: block;
     filter: brightness(0) invert(1); 
     opacity: 0.9;
@@ -581,7 +581,7 @@ a:hover {
 /* تنسيق أيقونات التواصل الاجتماعي */
 .social-icons {
     display: flex;
-    gap: 20px; /* مسافة ممتازة بين الأيقونات */
+    gap: 20px;
     justify-content: center;
 }
 
@@ -589,8 +589,8 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 46px; /* تكبير حجم الدائرة */
-    height: 46px; /* تكبير حجم الدائرة */
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     color: #cbd5e1;
@@ -599,7 +599,7 @@ a:hover {
 }
 
 .social-icons a svg {
-    width: 22px; /* تكبير حجم الأيقونة الداخلية */
+    width: 22px;
     height: 22px;
 }
 
