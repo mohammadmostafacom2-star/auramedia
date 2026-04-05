@@ -1,1 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الباقات والتسعير - Aura Media</title>
+    
+    <!-- خطوط جوجل (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ملف التنسيقات العام -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- تنسيقات خاصة بصفحة التسعير -->
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .pricing-section {
+            padding: 50px 0 80px;
+        }
+
+        /* أزرار التبديل (Tabs) */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .tab-btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            background: var(--white);
+            color: var(--text-muted);
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .tab-btn:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        .tab-btn.active {
+            background: var(--gradient);
+            color: var(--white);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* محتوى التبويبات */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* شبكة البطاقات */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center; /* لتوسيط البطاقة الذهبية الأكبر */
+        }
+
+        /* تصميم البطاقة */
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            transition: var(--transition);
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 29, 149, 0.1);
+        }
+
+        /* أيقونة واسم الباقة */
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        /* السعر */
+        .card-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .card-price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* الوصول المتوقع */
+        .card-reach {
+            background: #f0f7ff;
+            color: var(--secondary-color);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* لمن هذه الباقة */
+        .card-target {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            min-height: 50px; /* لتوحيد ارتفاع البطاقات */
+        }
+
+        /* زر الطلب */
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            background: #f1f5f9;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .pricing-card:hover .order-btn {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* تمييز الباقة الذهبية (الأكثر طلباً) */
+        .pricing-card.popular {
+            border: 2px solid var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+            z-index: 1;
+        }
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: var(--white);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        .pricing-card.popular .order-btn {
+            background: var(--gradient);
+            color: var(--white);
+        }
+
+        /* تنسيق باقات 20 يوم (المخصصة) */
+        .custom-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border: 1px solid #cbd5e1;
+        }
+        .custom-banner h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .custom-banner p {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+            .tab-btn {
+                width: 45%;
+                padding: 10px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- حاوية الرأس -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- ترويسة الصفحة -->
+        <section class="page-header animate-on-scroll">
+            <div class="container">
+                <h1>الباقات والتسعير</h1>
+                <p>اختر الباقة التي تناسب أهدافك وميزانيتك</p>
+            </div>
+        </section>
+
+        <!-- قسم التسعير -->
+        <section class="pricing-section">
+            <div class="container">
+                
+                <!-- أزرار التبديل -->
+                <div class="tabs-container animate-on-scroll">
+                    <button class="tab-btn active" onclick="openTab('tab-5')">5 أيام</button>
+                    <button class="tab-btn" onclick="openTab('tab-10')">10 أيام</button>
+                    <button class="tab-btn" onclick="openTab('tab-15')">15 يوم</button>
+                    <button class="tab-btn" onclick="openTab('tab-20')">20 يوم فأكثر</button>
+                </div>
+
+                <!-- ==========================================
+                     تبويب 5 أيام
+                     ========================================== -->
+                <div id="tab-5" class="tab-content active">
+                    <div class="pricing-grid">
+                        
+                        <!-- فضية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">🥈</div>
+                            <h3 class="card-title">الباقة الفضية</h3>
+                            <div class="card-price">10$</div>
+                            <div class="card-reach">🎯 الوصول: 14k - 35k شخص</div>
+                            <p class="card-target">مناسبة للمسوقين أونلاين وذوي الدخل المحدود وللراغبين في التجربة لأول مرة!</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ذهبية (الأكثر طلباً) -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">الأكثر طلباً</div>
+                            <div class="card-icon">🥇</div>
+                            <h3 class="card-title">الباقة الذهبية</h3>
+                            <div class="card-price">19$</div>
+                            <div class="card-reach">🎯 الوصول: 28k - 77k شخص</div>
+                            <p class="card-target">مناسبة لصغار التجار والمشاريع الصغيرة التي تبحث عن انطلاقة قوية.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ماسية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">💎</div>
+                            <h3 class="card-title">الباقة الماسية</h3>
+                            <div class="card-price">30$</div>
+                            <div class="card-reach">🎯 الوصول: 42k - 101k شخص</div>
+                            <p class="card-target">مناسبة للمشاريع المتوسطة الصاعدة التي تحتاج لانتشار واسع وسريع.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     تبويب 10 أيام
+                     ========================================== -->
+                <div id="tab-10" class="tab-content">
+                    <div class="pricing-grid">
+                        
+                        <!-- فضية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">🥈</div>
+                            <h3 class="card-title">الباقة الفضية</h3>
+                            <div class="card-price">21$</div>
+                            <div class="card-reach">🎯 الوصول: 31k - 84k شخص</div>
+                            <p class="card-target">ممتازة للمندوبين وصانعي المحتوى المبتدئين لبناء جمهور أولي.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ذهبية (الأكثر طلباً) -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">الخيار المفضل</div>
+                            <div class="card-icon">🥇</div>
+                            <h3 class="card-title">الباقة الذهبية</h3>
+                            <div class="card-price">41$</div>
+                            <div class="card-reach">🎯 الوصول: 59k - 147k شخص</div>
+                            <p class="card-target">مثالية للعاملين بقطاع الصحة، العيادات، ومراكز التعليم والتدريب.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ماسية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">💎</div>
+                            <h3 class="card-title">الباقة الماسية</h3>
+                            <div class="card-price">61$</div>
+                            <div class="card-reach">🎯 الوصول: 86k - 210k شخص</div>
+                            <p class="card-target">مخصصة للمكاتب العقارية ومعارض السيارات لضمان وصول للعملاء المهتمين.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     تبويب 15 يوم
+                     ========================================== -->
+                <div id="tab-15" class="tab-content">
+                    <div class="pricing-grid">
+                        
+                        <!-- فضية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">🥈</div>
+                            <h3 class="card-title">الباقة الفضية</h3>
+                            <div class="card-price">32$</div>
+                            <div class="card-reach">🎯 الوصول: 49k - 134k شخص</div>
+                            <p class="card-target">للمقاهي والصالونات، وللمستقلين والمصممين لعرض أعمالهم باستمرار.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ذهبية (الأكثر طلباً) -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">الأكثر مبيعاً</div>
+                            <div class="card-icon">🥇</div>
+                            <h3 class="card-title">الباقة الذهبية</h3>
+                            <div class="card-price">63$</div>
+                            <div class="card-reach">🎯 الوصول: 98k - 268k شخص</div>
+                            <p class="card-target">الخيار الأقوى للمتاجر الإلكترونية والمطاعم لزيادة المبيعات والطلبات.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ماسية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">💎</div>
+                            <h3 class="card-title">الباقة الماسية</h3>
+                            <div class="card-price">99$</div>
+                            <div class="card-reach">🎯 الوصول: 154k - 394k شخص</div>
+                            <p class="card-target">لأصحاب المنتجات، الشركات الكبيرة، والحملات الموسمية الضخمة.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     تبويب 20 يوم فأكثر (مخصصة)
+                     ========================================== -->
+                <div id="tab-20" class="tab-content">
+                    
+                    <div class="custom-banner">
+                        <h2>باقات مخصصة (20 يوم وما فوق)</h2>
+                        <p>الباقات الأفضل نتائج والأوفر على المدى الطويل 🚀</p>
+                    </div>
+
+                    <div class="pricing-grid">
+                        
+                        <!-- فضية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">🥈</div>
+                            <h3 class="card-title">فضية مخصصة</h3>
+                            <div class="card-price">1.89$ <span>/ يوم</span></div>
+                            <p class="card-target">حملة مستمرة بتكلفة اقتصادية جداً لضمان تواجدك الدائم أمام عملائك.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ذهبية -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">الأوفر قيمة</div>
+                            <div class="card-icon">🥇</div>
+                            <h3 class="card-title">ذهبية مخصصة</h3>
+                            <div class="card-price">3.89$ <span>/ يوم</span></div>
+                            <p class="card-target">توازن مثالي بين التكلفة والوصول العالي لحملات التسويق المستمرة.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                        <!-- ماسية -->
+                        <div class="pricing-card">
+                            <div class="card-icon">💎</div>
+                            <h3 class="card-title">ماسية مخصصة</h3>
+                            <div class="card-price">5.89$ <span>/ يوم</span></div>
+                            <p class="card-target">أقصى قوة إعلانية يومية للسيطرة على السوق واستهداف شريحة ضخمة.</p>
+                            <a href="order.html" class="order-btn">اطلب هذه الباقة</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- حاوية الفوتر -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ملف الجافاسكربت العام -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- سكربت خاص بتبديل الباقات (مدمج هنا لسهولة العمل) -->
+    <script>
+        function openTab(tabId) {
+            // إخفاء جميع المحتويات
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // إزالة التفعيل من جميع الأزرار
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // إظهار المحتوى المطلوب وتفعيل الزر الخاص به
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
