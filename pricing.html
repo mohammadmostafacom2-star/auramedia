@@ -553,14 +553,14 @@
                     const usdPrice = parseFloat(el.getAttribute('data-usd'));
                     const suffix = el.getAttribute('data-suffix') || '';
                     
-                    // العملية الحسابية: (السعر بالدولار * سعر الصرف) / 100
+                    // العملية الحسابية: (السعر بالدولار * سعر الصرف)
                     // نستخدم Math.round لتقريب الرقم لأقرب عدد صحيح
-                    const sypPrice = Math.round((usdPrice * rate) / 100);
+                    const sypPrice = Math.round(usdPrice * rate);
                     
                     // تنسيق الرقم بوضع فواصل للآلاف لسهولة القراءة
                     const formattedPrice = sypPrice.toLocaleString('en-US');
 
-                    el.innerHTML = `(يعادل ${formattedPrice} ل.س<span class="suffix">${suffix}</span>)`;
+                    el.innerHTML = `${formattedPrice} ل.س جديدة<span class="suffix">${suffix}</span>`;
                 });
             } catch (error) {
                 console.error('تعذر جلب سعر الصرف:', error);
