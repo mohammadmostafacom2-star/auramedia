@@ -555,20 +555,18 @@ a:hover {
     margin-bottom: 40px;
 }
 
-.footer-info h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* جعل حاوية الشعار والأيقونات متمركزة عمودياً */
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط الشعار والأيقونات */
 }
 
 /* تنسيق شعار الفوتر */
 .footer-logo {
     height: 110px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* تقليل المسافة قليلاً لتقترب الأيقونات من الشعار */
     display: block;
     filter: brightness(0) invert(1); 
     opacity: 0.9;
@@ -580,33 +578,29 @@ a:hover {
     transform: scale(1.05);
 }
 
-.footer-info p {
-    color: #94a3b8;
-}
-
-.footer-info a {
-    color: #38bdf8;
-    font-weight: 700;
-}
-
 /* تنسيق أيقونات التواصل الاجتماعي */
 .social-icons {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 20px; /* مسافة ممتازة بين الأيقونات */
+    justify-content: center;
 }
 
 .social-icons a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 46px; /* تكبير حجم الدائرة */
+    height: 46px; /* تكبير حجم الدائرة */
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     color: #cbd5e1;
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icons a svg {
+    width: 22px; /* تكبير حجم الأيقونة الداخلية */
+    height: 22px;
 }
 
 .social-icons a:hover {
@@ -699,22 +693,9 @@ a:hover {
         padding: 40px 0 20px;
     }
 
-    .footer-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
     .footer-logo {
         height: 70px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    /* توسيط أيقونات التواصل في الموبايل */
-    .social-icons {
-        justify-content: center;
+        margin-bottom: 15px;
     }
     
     .footer-content {
