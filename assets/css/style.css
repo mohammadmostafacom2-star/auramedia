@@ -566,7 +566,7 @@ a:hover {
 
 /* تنسيق شعار الفوتر الجديد */
 .footer-logo {
-    height: 120px; /* تم تكبير الشعار في اللابتوب من 70 إلى 110 */
+    height: 110px; /* تم تكبير الشعار في اللابتوب من 70 إلى 110 */
     object-fit: contain;
     margin-bottom: 20px;
     display: block;
