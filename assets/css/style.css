@@ -538,7 +538,7 @@ a:hover {
 .footer-wave svg {
     display: block;
     width: 100%;
-    height: 120px;
+    height: auto;
 }
 
 .footer {
@@ -552,10 +552,7 @@ a:hover {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: -40px;
     margin-bottom: 10px;
-    position: relative;
-    z-index: 5;
 }
 
 /* جعل حاوية الشعار والأيقونات متمركزة عمودياً */
