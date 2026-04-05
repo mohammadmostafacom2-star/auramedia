@@ -1,34 +1,89 @@
 // =========================================
-// إدارة القائمة الجانبية (Sidebar)
+// تحميل المكونات (Header & Footer) ديناميكياً
 // =========================================
-const menuBtn = document.getElementById('menuBtn');
-const closeBtn = document.getElementById('closeBtn');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
+async function loadComponents() {
+    try {
+        // التحقق من وجود حاوية الرأس وتحميله
+        const headerPlaceholder = document.getElementById('header-placeholder');
+        if (headerPlaceholder) {
+            const headerRes = await fetch('components/header.html');
+            const headerHtml = await headerRes.text();
+            headerPlaceholder.innerHTML = headerHtml;
+        }
 
-// دالة لفتح القائمة
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // منع التمرير في الصفحة بالخلفية
+        // التحقق من وجود حاوية الفوتر وتحميله
+        const footerPlaceholder = document.getElementById('footer-placeholder');
+        if (footerPlaceholder) {
+            const footerRes = await fetch('components/footer.html');
+            const footerHtml = await footerRes.text();
+            footerPlaceholder.innerHTML = footerHtml;
+        }
+
+        // تفعيل الوظائف التي تعتمد على الرأس بعد تحميله
+        initSidebar();
+        setActiveLink();
+    } catch (error) {
+        console.error('حدث خطأ أثناء تحميل المكونات:', error);
+    }
+}
+
+// =========================================
+// تحديد الرابط النشط (Active Link) تلقائياً
+// =========================================
+function setActiveLink() {
+    // الحصول على اسم الصفحة الحالية من الرابط
+    let currentPath = window.location.pathname.split('/').pop();
+    if (currentPath === '') currentPath = 'index.html'; // الصفحة الافتراضية
+
+    // جلب جميع الروابط في القائمتين (العلوية والجانبية)
+    const navLinks = document.querySelectorAll('.desktop-nav a, .sidebar-nav a');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active'); // إزالة الكلاس من الجميع أولاً
+        
+        // إذا كان الرابط يطابق الصفحة الحالية، أضف الكلاس
+        if (link.getAttribute('data-page') === currentPath) {
+            link.classList.add('active');
+        }
     });
 }
 
-// دالة لإغلاق القائمة
-function closeSidebar() {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto'; // إعادة تفعيل التمرير
+// =========================================
+// إدارة القائمة الجانبية (Sidebar)
+// =========================================
+function initSidebar() {
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    // دالة لفتح القائمة
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // منع التمرير في الصفحة بالخلفية
+        });
+    }
+
+    // دالة لإغلاق القائمة
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto'; // إعادة تفعيل التمرير
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
+    }
 }
 
-if (closeBtn) {
-    closeBtn.addEventListener('click', closeSidebar);
-}
-
-if (overlay) {
-    overlay.addEventListener('click', closeSidebar);
-}
+// تشغيل دالة تحميل المكونات عند اكتمال تحميل هيكل الصفحة
+document.addEventListener('DOMContentLoaded', loadComponents);
 
 // =========================================
 // إدارة الأسئلة الشائعة (Accordion)
