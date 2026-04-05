@@ -551,8 +551,8 @@ a:hover {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 20px; /* تم تقليل المسافة السفلية من 40 إلى 20 */
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 /* جعل حاوية الشعار والأيقونات متمركزة عمودياً */
@@ -627,7 +627,7 @@ a:hover {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
     border-top: 1px solid #1e293b;
     color: #64748b;
     font-size: 0.9rem;
