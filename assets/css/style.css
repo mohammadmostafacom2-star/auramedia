@@ -205,7 +205,7 @@ a:hover {
    قسم الترحيب (Hero Section)
    ========================================= */
 .hero {
-    padding: 50px 20px 30px; /* تم تقليل المسافة السفلية */
+    padding: 50px 20px 30px;
     background: linear-gradient(135deg, #f0f4ff 0%, var(--white) 100%);
     position: relative;
     overflow: hidden;
@@ -345,7 +345,7 @@ a:hover {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 40px; /* تم تقليل المسافة السفلية من 60 إلى 40 */
+    margin-bottom: 40px;
     color: var(--text-dark);
     position: relative;
 }
@@ -354,7 +354,7 @@ a:hover {
    قسم خطوات العمل
    ========================================= */
 .steps-section {
-    padding: 60px 0; /* تم تقليل المسافة من 100 إلى 60 */
+    padding: 60px 0;
     background: var(--bg-color);
 }
 
@@ -424,7 +424,7 @@ a:hover {
    قسم الأسئلة الشائعة (FAQ)
    ========================================= */
 .faq-section {
-    padding: 60px 0 40px; /* تم تقليل المسافة العلوية من 80 إلى 60 */
+    padding: 60px 0 40px;
     background: var(--white);
     position: relative; /* ضروري لاحتواء الشبكة التقنية */
     overflow: hidden; /* لمنع خروج الشبكة عن القسم */
@@ -566,7 +566,7 @@ a:hover {
 
 /* تنسيق شعار الفوتر الجديد */
 .footer-logo {
-    height: 70px;
+    height: 110px; /* تم تكبير الشعار في اللابتوب من 70 إلى 110 */
     object-fit: contain;
     margin-bottom: 20px;
     display: block;
@@ -632,7 +632,7 @@ a:hover {
     }
 
     .hero {
-        padding: 40px 15px 30px; /* تقليل المسافة السفلية للموبايل */
+        padding: 40px 15px 30px;
     }
 
     .hero-content {
@@ -661,10 +661,9 @@ a:hover {
 
     .section-title {
         font-size: 2rem;
-        margin-bottom: 30px; /* تقليل المسافة تحت العنوان للموبايل */
+        margin-bottom: 30px;
     }
     
-    /* تقليل المسافات بين الأقسام في الموبايل */
     .steps-section {
         padding: 40px 0;
     }
@@ -679,10 +678,13 @@ a:hover {
         align-items: center;
         text-align: center;
     }
+    
     .footer-logo {
+        height: 70px; /* الحفاظ على الحجم الممتاز في الموبايل كما طلبت */
         margin-left: auto;
         margin-right: auto;
     }
+    
     .footer-content {
         flex-direction: column;
         text-align: center;
