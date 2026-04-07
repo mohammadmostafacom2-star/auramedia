@@ -171,7 +171,7 @@ fileInput.addEventListener('change', async function() {
         const imageUrl = await uploadToCloudinary(compressedFile);
         uploadedImageUrl = imageUrl; 
 
-        // تحديث الواجهة (بدون أيقونة الصح كما طلبت)
+        // تحديث الواجهة
         fileNameDisplay.textContent = `تم الرفع بنجاح: ${file.name}`;
         fileDisplayContainer.style.display = 'flex';
         fileUploadText.textContent = 'اضغط لرفع صورة الإشعار';
@@ -289,14 +289,14 @@ orderForm.addEventListener('submit', function(e) {
         locations = checkedCities.join('، ');
     }
 
-    // 3. تنسيق الرسالة (Layout)
-    const message = `مرحباً Aura Media، أود تقديم طلب تمويل جديد 🚀
+    // 3. تنسيق الرسالة (Layout) بدون إيموجي
+    const message = `مرحباً Aura Media، أود تقديم طلب تمويل جديد.
 
-📦 *تفاصيل الباقة:*
+*تفاصيل الباقة:*
 - المدة: ${finalDurationText}
 - نوع الباقة: ${packageWithPrice}
 
-🔗 *الروابط والمعرفات:*
+*الروابط والمعرفات:*
 - رابط الصفحة:
 ${pageLink}
 
@@ -306,12 +306,12 @@ ${postLink}
 - المشرف المضاف:
 ${adminText}
 
-🎯 *الاستهداف:*
+*الاستهداف:*
 - العمر: من ${ageMin} إلى ${ageMax}
 - الجنس: ${gender}
 - الموقع: ${locations}
 
-💳 *الدفع:*
+*الدفع:*
 - طريقة الدفع: ${paymentMethod}
 - رابط إثبات الدفع:
 ${uploadedImageUrl}`;
@@ -319,7 +319,7 @@ ${uploadedImageUrl}`;
     // 4. التنبيه والتحويل
     alert("تم تجهيز طلبك بنجاح!\n\nسيتم تحويلك الآن إلى واتساب لإرسال الطلب.");
 
-    // استخدام encodeURIComponent لضمان عدم تشوه الأيقونات والنصوص
+    // استخدام encodeURIComponent لضمان عدم تشوه النصوص
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
