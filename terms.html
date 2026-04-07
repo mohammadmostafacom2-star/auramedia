@@ -13,7 +13,7 @@
     <!-- ملف التنسيقات العام -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- تنسيقات خاصة بصفحة النصوص (معدلة للقراءة المريحة وتقليل الفراغات) -->
+    <!-- تنسيقات خاصة بصفحة النصوص -->
     <style>
         .page-header {
             text-align: center;
@@ -36,10 +36,9 @@
         }
         .text-card {
             background: var(--white);
-            padding: 50px 80px; /* زيادة الهوامش الداخلية الجانبية لتعويض العرض */
+            padding: 50px 80px; /* هوامش مريحة للشاشات الكبيرة */
             border-radius: 20px;
             box-shadow: var(--shadow);
-            /* تم إزالة max-width ليتمدد الصندوق مع الحاوية الأساسية */
             margin: 0 auto;
             border: 1px solid rgba(0,0,0,0.02);
             text-align: right;
@@ -89,7 +88,7 @@
             border-radius: 50%;
         }
 
-        /* تنسيق النصوص (خط كبير ومسافات مريحة) */
+        /* تنسيق النصوص */
         .text-card p {
             color: var(--text-dark);
             font-size: 1.15rem;
@@ -134,21 +133,66 @@
             font-size: 1.2rem;
         }
         
+        /* =========================================
+           استعلامات الوسائط (الهواتف المحمولة) - التعديل الجذري
+           ========================================= */
         @media (max-width: 768px) {
-            .text-card {
-                padding: 30px 20px; /* هوامش أصغر تناسب شاشات الجوال */
+            .page-header {
+                padding: 20px 15px;
             }
             .page-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
+            .page-header p {
+                font-size: 0.9rem;
+            }
+            .text-content-section {
+                padding: 20px 0 40px;
+            }
+            .text-card {
+                padding: 20px 15px; /* تقليل الهوامش الداخلية بشكل كبير */
+                border-radius: 15px;
+            }
+            
+            /* تصغير المقدمة */
+            .intro-text {
+                font-size: 1rem !important;
+                padding: 15px !important;
+                margin-bottom: 25px !important;
+            }
+
+            /* تقريب المسافات بين البنود */
+            .term-section {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+
+            /* تصغير العناوين والنصوص */
             .text-card h3 {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .text-card h3::before {
+                width: 8px;
+                height: 8px;
             }
             .text-card p {
-                font-size: 1.05rem;
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 10px;
             }
+
+            /* تصغير الصناديق المميزة */
             .highlight-box {
-                padding: 20px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            .conclusion-box {
+                padding: 15px;
+                margin-top: 25px;
+            }
+            .conclusion-box p {
+                font-size: 1rem;
             }
         }
     </style>
