@@ -1,1 +1,31 @@
+name: Cleanup Old Cloudinary Images
 
+on:
+  schedule:
+    # تشغيل السكربت كل يوم الساعة 12:00 منتصف الليل بتوقيت UTC
+    - cron: '0 0 * * *'
+  # السماح بتشغيل السكربت يدوياً من واجهة جيت هاب
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cloudinary SDK
+        run: npm install cloudinary
+
+      - name: Run cleanup script
+        env:
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+        run: node cleanup-images.js
