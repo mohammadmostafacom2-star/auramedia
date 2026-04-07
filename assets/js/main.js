@@ -404,3 +404,47 @@ if (document.getElementById('particles-js-faq')) {
         "retina_detect": true
     });
 }
+
+// =========================================
+// ميزة النسخ بنقرة واحدة (Click-to-Copy)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const copyAdminBtns = document.querySelectorAll('.copy-admin-btn');
+
+    if (copyAdminBtns.length > 0) {
+        copyAdminBtns.forEach(btn => {
+            btn.addEventListener('click', async () => {
+                // جلب الرقم المراد نسخه من الخاصية data-clipboard
+                const textToCopy = btn.getAttribute('data-clipboard');
+                
+                try {
+                    // محاولة النسخ باستخدام واجهة الحافظة الحديثة
+                    await navigator.clipboard.writeText(textToCopy);
+                    
+                    // إظهار رسالة النجاح
+                    btn.classList.add('copied');
+                    
+                    // إخفاء الرسالة بعد ثانيتين
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('فشل النسخ: ', err);
+                    
+                    // طريقة بديلة للنسخ في حال عدم دعم المتصفح للواجهة الحديثة
+                    const tempInput = document.createElement('input');
+                    tempInput.value = textToCopy;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        });
+    }
+});
