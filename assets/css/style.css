@@ -668,7 +668,7 @@ a:hover {
         padding: 10px 15px;
     }
     .logo img {
-        height: 45px; /* تصغير الشعار */
+        height: 55px; /* إعادة الشعار لحجمه الأساسي */
     }
 
     /* قسم الترحيب */
@@ -766,7 +766,7 @@ a:hover {
         height: auto;
     }
     .footer-logo {
-        height: 55px; /* تصغير الشعار */
+        height: 70px; /* إعادة الشعار لحجمه الأساسي */
         margin-bottom: 15px;
     }
     .footer-content {
