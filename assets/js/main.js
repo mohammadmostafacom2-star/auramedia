@@ -115,11 +115,11 @@ accordionHeaders.forEach(header => {
 // =========================================
 // حركات الظهور عند التمرير (Scroll Animations)
 // =========================================
-// إعدادات المراقب (يتم التفعيل عندما يظهر 15% من العنصر في الشاشة)
+// إعدادات المراقب (تم التعديل لحل مشكلة التعليق)
 const observerOptions = {
     root: null,
-    rootMargin: '0px',
-    threshold: 0.15
+    rootMargin: '50px', // يبدأ التحسس قبل دخول العنصر بـ 50 بكسل
+    threshold: 0.05     // يكفي ظهور 5% فقط من العنصر لكي يعمل
 };
 
 // إنشاء المراقب
@@ -137,9 +137,22 @@ const scrollObserver = new IntersectionObserver((entries, observer) => {
 // تطبيق المراقب على جميع العناصر التي تحمل كلاس animate-on-scroll
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
     animatedElements.forEach(el => {
         scrollObserver.observe(el);
     });
+
+    // فحص فوري: إجبار العناصر الموجودة في الشاشة على الظهور فوراً عند التحميل
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // إذا كان العنصر داخل الشاشة المرئية
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                el.classList.add('is-visible');
+                scrollObserver.unobserve(el);
+            }
+        });
+    }, 100); // تأخير بسيط جداً لضمان اكتمال رسم الصفحة
 });
 
 // =========================================
