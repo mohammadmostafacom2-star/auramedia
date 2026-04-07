@@ -172,7 +172,7 @@ fileInput.addEventListener('change', async function() {
         uploadedImageUrl = imageUrl; // حفظ الرابط
 
         // تحديث الواجهة
-        fileNameDisplay.textContent = `✅ تم الرفع بنجاح: ${file.name}`;
+        fileNameDisplay.textContent = `تم الرفع بنجاح: ${file.name}`;
         fileDisplayContainer.style.display = 'flex';
         fileUploadText.textContent = 'اضغط لرفع صورة الإشعار';
         submitBtn.disabled = false;
