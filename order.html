@@ -276,7 +276,7 @@
 
         /* حاوية عرض اسم الملف وزر الحذف */
         .file-display-container {
-            display: none; /* مخفية افتراضياً */
+            display: none;
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -351,26 +351,132 @@
             display: none;
         }
 
+        /* =========================================
+           استعلامات الوسائط (الهواتف المحمولة) - التعديل الجذري
+           ========================================= */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.6rem;
+            .page-header {
+                padding: 20px 15px;
             }
+            .page-header h1 {
+                font-size: 1.4rem;
+            }
+            .page-header p {
+                font-size: 0.9rem;
+            }
+            
+            .order-section {
+                padding: 20px 0 40px;
+            }
+            .order-card {
+                padding: 20px 15px; /* تقليل الهوامش الداخلية */
+                border-radius: 15px;
+            }
+
+            /* الحقول والصفوف */
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
             .form-row .form-group {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
-            .order-card {
-                padding: 25px 20px;
+            .form-group {
+                margin-bottom: 15px;
             }
+            .form-label {
+                font-size: 0.95rem;
+                margin-bottom: 5px;
+            }
+            .form-control {
+                padding: 10px 12px; /* تصغير ارتفاع الحقل */
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+
+            /* أزرار الراديو */
+            .radio-group {
+                gap: 10px;
+            }
+            .radio-label {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+
+            /* التحكم بالعمر */
             .age-controls-wrapper {
                 flex-direction: column;
                 gap: 10px;
             }
+            .age-box {
+                border-radius: 8px;
+            }
+            .age-box span {
+                font-size: 0.85rem;
+                padding: 0 8px;
+            }
+            .age-btn {
+                width: 35px; /* تصغير الأزرار */
+                height: 35px;
+                font-size: 1.1rem;
+            }
+            .age-input {
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            /* شبكة المحافظات */
             .locations-grid {
                 grid-template-columns: repeat(2, 1fr);
+                padding: 10px;
+                gap: 8px;
+                border-radius: 8px;
+            }
+            .checkbox-label {
+                font-size: 0.85rem;
+            }
+            .all-syria-box {
+                padding: 8px;
+                margin-bottom: 0;
+            }
+
+            /* صندوق رفع الملفات */
+            .file-upload-box {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            .file-upload-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+            .file-upload-text {
+                font-size: 0.9rem;
+            }
+            .file-upload-hint {
+                font-size: 0.8rem;
+            }
+            .file-display-container {
+                padding: 8px 12px;
+            }
+            #file-name-display {
+                font-size: 0.85rem;
+            }
+
+            /* زر الإرسال والسعر */
+            .submit-btn {
+                padding: 12px;
+                font-size: 1.05rem;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+            .submit-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+            .price-display {
+                font-size: 0.95rem;
+                padding: 8px 10px;
             }
         }
     </style>
