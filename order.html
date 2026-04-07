@@ -86,6 +86,26 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
+        /* =========================================
+           تنسيق القوائم المنسدلة (Select) الاحترافي
+           ========================================= */
+        select.form-control {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            /* سهم SVG مخصص بلون الهوية */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234c1d95' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center; /* إبعاد السهم عن الحافة اليسرى */
+            background-size: 16px;
+            padding-left: 40px; /* ترك مساحة للسهم لكي لا يتداخل مع النص */
+            cursor: pointer;
+        }
+        /* إخفاء السهم الافتراضي في متصفحات IE/Edge القديمة */
+        select.form-control::-ms-expand {
+            display: none;
+        }
+
         /* تنسيق حقل الأيام المخصصة */
         #customDaysContainer {
             margin-top: 10px;
@@ -352,7 +372,7 @@
         }
 
         /* =========================================
-           استعلامات الوسائط (الهواتف المحمولة) - التعديل الجذري
+           استعلامات الوسائط (الهواتف المحمولة)
            ========================================= */
         @media (max-width: 768px) {
             .page-header {
@@ -369,11 +389,10 @@
                 padding: 20px 0 40px;
             }
             .order-card {
-                padding: 20px 15px; /* تقليل الهوامش الداخلية */
+                padding: 20px 15px;
                 border-radius: 15px;
             }
 
-            /* الحقول والصفوف */
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
@@ -389,12 +408,17 @@
                 margin-bottom: 5px;
             }
             .form-control {
-                padding: 10px 12px; /* تصغير ارتفاع الحقل */
+                padding: 10px 12px;
                 font-size: 0.9rem;
                 border-radius: 8px;
             }
+            
+            /* تعديل مسافة السهم في الموبايل */
+            select.form-control {
+                background-position: left 12px center;
+                padding-left: 35px;
+            }
 
-            /* أزرار الراديو */
             .radio-group {
                 gap: 10px;
             }
@@ -404,7 +428,6 @@
                 border-radius: 8px;
             }
 
-            /* التحكم بالعمر */
             .age-controls-wrapper {
                 flex-direction: column;
                 gap: 10px;
@@ -417,7 +440,7 @@
                 padding: 0 8px;
             }
             .age-btn {
-                width: 35px; /* تصغير الأزرار */
+                width: 35px;
                 height: 35px;
                 font-size: 1.1rem;
             }
@@ -426,7 +449,6 @@
                 font-size: 1rem;
             }
 
-            /* شبكة المحافظات */
             .locations-grid {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 10px;
@@ -441,7 +463,6 @@
                 margin-bottom: 0;
             }
 
-            /* صندوق رفع الملفات */
             .file-upload-box {
                 padding: 15px;
                 border-radius: 8px;
@@ -463,7 +484,6 @@
                 font-size: 0.85rem;
             }
 
-            /* زر الإرسال والسعر */
             .submit-btn {
                 padding: 12px;
                 font-size: 1.05rem;
