@@ -17,12 +17,12 @@
     <style>
         .page-header {
             text-align: center;
-            padding: 30px 20px; /* تم تقليل الفراغ من 60 إلى 30 */
+            padding: 30px 20px;
             background: var(--white);
             border-bottom: 1px solid #e2e8f0;
         }
         .page-header h1 {
-            font-size: 2.2rem; /* تم تصغير الخط للابتوب */
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 10px;
@@ -32,17 +32,17 @@
             font-size: 1.1rem;
         }
         .text-content-section {
-            padding: 30px 0 60px; /* تم تقليل الفراغ العلوي من 60 إلى 30 */
+            padding: 30px 0 60px;
         }
         .text-card {
             background: var(--white);
-            padding: 50px;
+            padding: 50px 80px; /* زيادة الهوامش الداخلية الجانبية لتعويض العرض */
             border-radius: 20px;
             box-shadow: var(--shadow);
-            max-width: 900px;
+            /* تم إزالة max-width ليتمدد الصندوق مع الحاوية الأساسية */
             margin: 0 auto;
             border: 1px solid rgba(0,0,0,0.02);
-            text-align: right; /* محاذاة لليمين لراحة العين */
+            text-align: right;
         }
         
         /* تنسيق المقدمة */
@@ -109,14 +109,14 @@
 
         /* صندوق التمييز للبنود الهامة */
         .highlight-box {
-            background-color: #f0f7ff; /* أزرق فاتح جداً ومريح */
+            background-color: #f0f7ff;
             border-right: 4px solid var(--secondary-color);
             padding: 30px;
             border-radius: 15px;
-            border-bottom: none; /* إزالة الخط السفلي لأنه صندوق مستقل */
+            border-bottom: none;
         }
         .highlight-box h3::before {
-            display: none; /* إخفاء النقطة داخل الصندوق */
+            display: none;
         }
 
         /* صندوق الخاتمة */
@@ -136,9 +136,8 @@
         
         @media (max-width: 768px) {
             .text-card {
-                padding: 30px 20px;
+                padding: 30px 20px; /* هوامش أصغر تناسب شاشات الجوال */
             }
-            /* تعديل حجم العنوان ليكون أنيقاً على الجوال */
             .page-header h1 {
                 font-size: 1.6rem;
             }
