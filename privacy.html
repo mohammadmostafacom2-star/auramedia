@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - Aura Media</title>
+    
+    <!-- خطوط جوجل (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ملف التنسيقات العام -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- تنسيقات خاصة بصفحة النصوص -->
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .text-content-section {
+            padding: 30px 0 60px;
+        }
+        .text-card {
+            background: var(--white);
+            padding: 50px 80px; /* هوامش مريحة للشاشات الكبيرة */
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.02);
+            text-align: right;
+        }
+        
+        /* تنسيق المقدمة */
+        .intro-text {
+            font-size: 1.25rem !important;
+            color: var(--primary-color) !important;
+            font-weight: 800 !important;
+            margin-bottom: 40px !important;
+            line-height: 1.8;
+            background: #f8fafc;
+            padding: 20px 25px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        /* فواصل بين الأقسام */
+        .term-section {
+            padding-bottom: 35px;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .term-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        /* تنسيق العناوين مع نقطة دلالية */
+        .text-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .text-card h3::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        /* تنسيق النصوص */
+        .text-card p {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .text-card ul {
+            list-style-type: none;
+            padding-right: 20px;
+            margin-bottom: 15px;
+        }
+        .text-card ul li {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            font-weight: 600;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .text-card ul li::before {
+            content: '-';
+            position: absolute;
+            right: -20px;
+            color: var(--secondary-color);
+            font-weight: 800;
+        }
+
+        /* صندوق التمييز للبنود الهامة */
+        .highlight-box {
+            background-color: #f0f7ff;
+            border-right: 4px solid var(--secondary-color);
+            padding: 30px;
+            border-radius: 15px;
+            border-bottom: none;
+        }
+        .highlight-box h3::before {
+            display: none;
+        }
+
+        /* صندوق الخاتمة */
+        .conclusion-box {
+            background: #f5f3ff;
+            border-right: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        .conclusion-box p {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        
+        /* =========================================
+           استعلامات الوسائط (الهواتف المحمولة) - التعديل الجذري
+           ========================================= */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 20px 15px;
+            }
+            .page-header h1 {
+                font-size: 1.4rem;
+            }
+            .page-header p {
+                font-size: 0.9rem;
+            }
+            .text-content-section {
+                padding: 20px 0 40px;
+            }
+            .text-card {
+                padding: 20px 15px; /* تقليل الهوامش الداخلية بشكل كبير */
+                border-radius: 15px;
+            }
+            
+            /* تصغير المقدمة */
+            .intro-text {
+                font-size: 1rem !important;
+                padding: 15px !important;
+                margin-bottom: 25px !important;
+            }
+
+            /* تقريب المسافات بين البنود */
+            .term-section {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+
+            /* تصغير العناوين والنصوص */
+            .text-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .text-card h3::before {
+                width: 8px;
+                height: 8px;
+            }
+            .text-card p, .text-card ul li {
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 10px;
+            }
+
+            /* تصغير الصناديق المميزة */
+            .highlight-box {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            .conclusion-box {
+                padding: 15px;
+                margin-top: 25px;
+            }
+            .conclusion-box p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- حاوية الرأس والقائمة الجانبية -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- ترويسة الصفحة -->
+        <section class="page-header animate-on-scroll">
+            <div class="container">
+                <h1>سياسة الخصوصية</h1>
+                <p>كيف نحمي بياناتك في Aura Media</p>
+            </div>
+        </section>
+
+        <!-- محتوى السياسة -->
+        <section class="text-content-section">
+            <div class="container">
+                <div class="text-card animate-on-scroll">
+                    
+                    <div class="intro-text">
+                        في "أورا ميديا"، نضع خصوصية بياناتكم في مقدمة أولوياتنا. توضح هذه السياسة كيفية تعاملنا مع المعلومات التي تشاركونها معنا لغرض تمويل إعلاناتكم على منصات Meta (فيسبوك وإنستغرام).
+                    </div>
+
+                    <!-- صندوق مميز لأهم بند -->
+                    <div class="term-section highlight-box">
+                        <h3>حدود صلاحيات الوصول (المشرفين)</h3>
+                        <p>عند طلبنا إضافة أحد معرفات فريقنا بصلاحية <strong>"رؤى وإعلانات"</strong>، فإننا نوضح الآتي:</p>
+                        <ul>
+                            <li>هذه الصلاحية تقنية ومقيدة برمجياً من قِبل شركة Meta، وهي <strong>لا تمنحنا</strong> حق الوصول إلى رسائلكم الخاصة، أو القدرة على النشر في صفحتكم، أو تعديل إعداداتها الأساسية.</li>
+                            <li>يقتصر دورنا حصراً على إنشاء الحملة الإعلانية، إدارة الميزانية، ومراقبة أداء الإعلان لضمان أفضل النتائج.</li>
+                            <li>نحن نلتزم بعدم محاولة الوصول إلى أي بيانات خارج نطاق الحملة الإعلانية المتفق عليها.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>البيانات التي نجمعها</h3>
+                        <p>نجمع فقط البيانات اللازمة لتنفيذ طلبكم بدقة:</p>
+                        <ul>
+                            <li>روابط الصفحات والمنشورات المستهدفة.</li>
+                            <li>إثباتات الدفع (صور الإيصالات) لتوثيق المعاملات المالية.</li>
+                            <li>معلومات الاستهداف (العمر، الموقع، الجنس) لضبط إعدادات الحملة.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>أمان المعاملات المالية</h3>
+                        <ul>
+                            <li>نحن نطلب فقط صوراً لإيصالات التحويل (شام كاش أو USDT) لتوثيق الدفع.</li>
+                            <li><strong>لا نطلب أبداً</strong> كلمات مرور، أو مفاتيح خاصة بمحافظكم الإلكترونية، أو أي بيانات حساسة تمكننا من الوصول إلى حساباتكم المالية.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>حفظ البيانات (Data Retention)</h3>
+                        <ul>
+                            <li>نحتفظ ببيانات طلبكم (الروابط وإثباتات الدفع) لمدة محدودة فقط لغرض المحاسبة والدعم الفني.</li>
+                            <li>يتم أرشفة أو حذف البيانات المتعلقة بالحملات المنتهية بشكل دوري لضمان عدم تراكم معلوماتكم لدينا.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>التوافق مع سياسات الطرف الثالث (Meta)</h3>
+                        <ul>
+                            <li>بصفتنا مقدم خدمة تمويل، نحن نلتزم بسياسات الإعلانات الخاصة بشركة Meta.</li>
+                            <li>نحن غير مسؤولين عن أي إجراءات تتخذها منصة Meta تجاه صفحة العميل في حال كان المحتوى المنشور مخالفاً لسياساتهم، وتقع مسؤولية توافق المحتوى بالكامل على عاتق العميل.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>التواصل عبر واتساب</h3>
+                        <ul>
+                            <li>نستخدم رقم الواتساب الخاص بكم حصراً لإرسال تحديثات حالة الطلب (قبول، رفض، أو انتهاء الحملة).</li>
+                            <li>نلتزم بعدم إرسال رسائل ترويجية أو مشاركة رقمكم مع أي جهات تسويقية أخرى.</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>مشاركة البيانات</h3>
+                        <p>نحن لا نقوم ببيع، تأجير، أو مشاركة بياناتكم أو روابط صفحاتكم مع أي أطراف ثالثة. معلوماتكم تبقى سرية تماماً وتستخدم فقط داخل نظام "أورا ميديا" لإتمام الخدمة المطلوبة.</p>
+                    </div>
+
+                    <div class="term-section">
+                        <h3>مسؤولية العميل</h3>
+                        <p>لضمان أقصى درجات الأمان والخصوصية، ننصح جميع عملائنا بإزالة المشرف التابع لنا من إعدادات الصفحة فور انتهاء مدة الحملة الإعلانية المتفق عليها.</p>
+                    </div>
+
+                    <div class="conclusion-box">
+                        <p>التحديثات والموافقة:</p>
+                        <p style="font-size: 1rem; font-weight: 600; margin-top: 10px; color: var(--text-dark);">باستخدامكم لموقعنا وتقديم طلبات التمويل، فإنكم توافقون على ممارسات الخصوصية الموضحة في هذه الصفحة. قد نقوم بتحديث هذه السياسة من وقت لآخر لمواكبة التغييرات التقنية، وسيتم نشر أي تعديل فوراً هنا.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- حاوية الفوتر -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ملف الجافاسكربت -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
