@@ -13,7 +13,7 @@
     <!-- ملف التنسيقات العام -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- تنسيقات خاصة بصفحة الطلب (مضغوطة وبدون فراغات بيضاء زائدة) -->
+    <!-- تنسيقات خاصة بصفحة الطلب -->
     <style>
         .page-header {
             text-align: center;
@@ -22,7 +22,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
         .page-header h1 {
-            font-size: 2.2rem; /* تم تصغير الخط للابتوب */
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 5px;
@@ -46,7 +46,6 @@
             border: 1px solid rgba(0,0,0,0.03);
         }
 
-        /* تقسيم الحقول لعمودين في الشاشات الكبيرة لتوفير المساحة */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -58,7 +57,7 @@
             margin-bottom: 20px;
         }
         .form-row .form-group {
-            margin-bottom: 0; /* إزالة المارجن السفلي داخل الشبكة */
+            margin-bottom: 0;
         }
 
         .form-label {
@@ -87,7 +86,21 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        /* تنسيق أزرار الراديو (الجنس وطريقة الدفع) */
+        /* تنسيق حقل الأيام المخصصة */
+        #customDaysContainer {
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+        #customDays {
+            border-color: var(--secondary-color);
+            background-color: #f0f7ff;
+            font-weight: 700;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .radio-group {
             display: flex;
             gap: 15px;
@@ -122,7 +135,6 @@
             background: #f0f7ff;
         }
 
-        /* تنسيق العمر (أزرار + و -) */
         .age-controls-wrapper {
             display: flex;
             align-items: center;
@@ -179,7 +191,6 @@
             margin: 0;
         }
 
-        /* تنسيق شبكة المحافظات (Checkboxes) */
         .locations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -262,15 +273,43 @@
             font-size: 0.85rem;
             color: var(--text-muted);
         }
+
+        /* حاوية عرض اسم الملف وزر الحذف */
+        .file-display-container {
+            display: none; /* مخفية افتراضياً */
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
         #file-name-display {
-            display: block;
-            margin-top: 10px;
             font-weight: 700;
-            color: var(--primary-color);
-            font-size: 0.9rem;
+            color: #166534;
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+        .remove-file-btn {
+            background: #fee2e2;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .remove-file-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: scale(1.1);
         }
 
-        /* زر الإرسال */
         .submit-btn {
             width: 100%;
             background: var(--gradient);
@@ -286,7 +325,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); /* ظل أخضر خفيف للواتساب */
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             transition: var(--transition);
             margin-top: 30px;
         }
@@ -299,7 +338,6 @@
             height: 24px;
         }
 
-        /* السعر الديناميكي */
         .price-display {
             background: #f5f3ff;
             color: var(--primary-color);
@@ -310,11 +348,10 @@
             text-align: center;
             margin-top: 10px;
             border: 1px solid #ddd6fe;
-            display: none; /* مخفي افتراضياً حتى يتم الاختيار */
+            display: none;
         }
 
         @media (max-width: 768px) {
-            /* تعديل حجم العنوان ليكون أنيقاً على الجوال */
             .page-header h1 {
                 font-size: 1.6rem;
             }
@@ -369,12 +406,17 @@
                                     <option value="15">15 يوم</option>
                                     <option value="20+">مخصص (20 يوم وما فوق)</option>
                                 </select>
+                                
+                                <!-- حقل الأيام المخصصة (يظهر فقط عند اختيار 20+) -->
+                                <div id="customDaysContainer" style="display: none;">
+                                    <input type="number" id="customDays" class="form-control" min="20" placeholder="أدخل عدد الأيام (أقل شيء 20)">
+                                </div>
                             </div>
+                            
                             <div class="form-group">
                                 <label class="form-label" for="packageType">نوع الباقة</label>
                                 <select id="packageType" class="form-control" required disabled>
                                     <option value="" disabled selected>يرجى اختيار عدد الأيام أولاً</option>
-                                    <!-- سيتم تعبئة الخيارات عبر الجافاسكربت -->
                                 </select>
                                 <div id="priceDisplay" class="price-display"></div>
                             </div>
@@ -395,12 +437,12 @@
                         <!-- الصف الثالث: المشرف والدفع -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label" for="adminId">معرف المشرف الذي أضفته</label>
+                                <label class="form-label" for="adminId">المشرف الذي أضفته</label>
                                 <select id="adminId" class="form-control" required>
-                                    <option value="" disabled selected>اختر المعرف...</option>
-                                    <option value="10293772">10293772</option>
-                                    <option value="72929292">72929292</option>
-                                    <option value="59200228">59200228</option>
+                                    <option value="" disabled selected>اختر المشرف...</option>
+                                    <option value="61550512109629">Jonathan Harlequin (61550512109629)</option>
+                                    <option value="61585684903874">Mohammad Mostafa (61585684903874)</option>
+                                    <option value="100026330421509">Omar Mohammad (100026330421509)</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -421,14 +463,22 @@
                         <!-- إثبات الدفع -->
                         <div class="form-group">
                             <label class="form-label">إثبات الدفع (صورة الإشعار)</label>
-                            <div class="file-upload-box">
+                            <div class="file-upload-box" id="file-upload-box">
                                 <input type="file" id="paymentProof" accept="image/*" required>
                                 <div class="file-upload-icon">
                                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                 </div>
                                 <div class="file-upload-text">اضغط هنا لرفع صورة الإشعار</div>
                                 <div class="file-upload-hint">صيغ مدعومة: JPG, PNG, JPEG</div>
+                            </div>
+                            
+                            <!-- حاوية عرض اسم الملف وزر الحذف -->
+                            <div id="file-display-container" class="file-display-container">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                 <span id="file-name-display"></span>
+                                <button type="button" id="remove-file-btn" class="remove-file-btn" title="حذف الصورة">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </button>
                             </div>
                         </div>
 
