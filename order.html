@@ -86,22 +86,18 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        /* =========================================
-           تنسيق القوائم المنسدلة (Select) الاحترافي
-           ========================================= */
+        /* تنسيق القوائم المنسدلة (Select) الاحترافي */
         select.form-control {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            /* سهم SVG مخصص بلون الهوية */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234c1d95' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: left 15px center; /* إبعاد السهم عن الحافة اليسرى */
+            background-position: left 15px center;
             background-size: 16px;
-            padding-left: 40px; /* ترك مساحة للسهم لكي لا يتداخل مع النص */
+            padding-left: 40px;
             cursor: pointer;
         }
-        /* إخفاء السهم الافتراضي في متصفحات IE/Edge القديمة */
         select.form-control::-ms-expand {
             display: none;
         }
@@ -371,9 +367,6 @@
             display: none;
         }
 
-        /* =========================================
-           استعلامات الوسائط (الهواتف المحمولة)
-           ========================================= */
         @media (max-width: 768px) {
             .page-header {
                 padding: 20px 15px;
@@ -413,7 +406,6 @@
                 border-radius: 8px;
             }
             
-            /* تعديل مسافة السهم في الموبايل */
             select.form-control {
                 background-position: left 12px center;
                 padding-left: 35px;
@@ -533,7 +525,6 @@
                                     <option value="20+">مخصص (20 يوم وما فوق)</option>
                                 </select>
                                 
-                                <!-- حقل الأيام المخصصة (يظهر فقط عند اختيار 20+) -->
                                 <div id="customDaysContainer" style="display: none;">
                                     <input type="number" id="customDays" class="form-control" min="20" placeholder="أدخل عدد الأيام (أقل شيء 20)">
                                 </div>
@@ -588,17 +579,16 @@
 
                         <!-- إثبات الدفع -->
                         <div class="form-group">
-                            <label class="form-label">إثبات الدفع (صورة الإشعار)</label>
+                            <label class="form-label">رفع إثبات الدفع (سيتم ضغط الصورة تلقائياً)</label>
                             <div class="file-upload-box" id="file-upload-box">
-                                <input type="file" id="paymentProof" accept="image/*" required>
+                                <input type="file" id="paymentProof" accept="image/jpeg, image/png, image/webp" required>
                                 <div class="file-upload-icon">
                                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                 </div>
-                                <div class="file-upload-text">اضغط هنا لرفع صورة الإشعار</div>
-                                <div class="file-upload-hint">صيغ مدعومة: JPG, PNG, JPEG</div>
+                                <div class="file-upload-text">اضغط لرفع صورة الإشعار (سيتم رفعها للسحابة)</div>
+                                <div class="file-upload-hint">الحجم الأقصى 25 ميجا</div>
                             </div>
                             
-                            <!-- حاوية عرض اسم الملف وزر الحذف -->
                             <div id="file-display-container" class="file-display-container">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                 <span id="file-name-display"></span>
@@ -692,6 +682,8 @@
 
     <!-- ملفات الجافاسكربت -->
     <script src="assets/js/main.js"></script>
+    <!-- مكتبة ضغط الصور -->
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
     <script src="assets/js/order-handler.js"></script>
 </body>
 </html>
