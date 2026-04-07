@@ -22,7 +22,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
         .page-header h1 {
-            font-size: 2.2rem; /* تم تصغير الخط للابتوب */
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 10px;
@@ -122,7 +122,7 @@
             font-size: 2.8rem;
             font-weight: 800;
             color: var(--primary-color);
-            margin-bottom: 5px; /* تم تقليل المسافة لتقريب السعر السوري */
+            margin-bottom: 5px;
             line-height: 1;
         }
         .card-price span {
@@ -131,7 +131,7 @@
             font-weight: 600;
         }
 
-        /* السعر بالليرة السورية (الجديد) */
+        /* السعر بالليرة السورية */
         .card-price-syp {
             font-size: 1.1rem;
             color: var(--text-muted);
@@ -239,21 +239,113 @@
             font-weight: 700;
         }
 
+        /* =========================================
+           استعلامات الوسائط (الهواتف المحمولة) - التعديل الجذري
+           ========================================= */
         @media (max-width: 768px) {
-            /* تعديل حجم العنوان ليكون أنيقاً على الجوال */
+            .page-header {
+                padding: 20px 15px;
+            }
             .page-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
-            .pricing-card.popular {
-                transform: scale(1);
+            .page-header p {
+                font-size: 0.9rem;
             }
-            .pricing-card.popular:hover {
-                transform: translateY(-10px);
+            
+            .pricing-section {
+                padding: 30px 0 50px;
+            }
+
+            /* أزرار التبويبات */
+            .tabs-container {
+                gap: 8px;
+                margin-bottom: 30px;
             }
             .tab-btn {
-                width: 45%;
+                width: calc(50% - 4px); /* زرين في كل سطر */
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+
+            /* شبكة البطاقات */
+            .pricing-grid {
+                gap: 15px;
+            }
+
+            /* البطاقة نفسها */
+            .pricing-card {
+                padding: 20px 15px; /* تقليل الهوامش الداخلية */
+                border-radius: 15px;
+            }
+            .pricing-card.popular {
+                transform: scale(1); /* إلغاء التكبير على الموبايل */
+            }
+            .pricing-card.popular:hover {
+                transform: translateY(-5px);
+            }
+
+            /* محتويات البطاقة */
+            .card-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+            .card-title {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .card-price {
+                font-size: 2rem; /* تصغير السعر */
+            }
+            .card-price span {
+                font-size: 0.9rem;
+            }
+            .card-price-syp {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+            .card-price-syp span.suffix {
+                font-size: 0.8rem;
+            }
+            .card-reach {
+                padding: 8px;
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+            }
+            .card-reach svg {
+                width: 16px;
+                height: 16px;
+            }
+            .card-target {
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+                min-height: auto; /* السماح للنص بأخذ مساحته الطبيعية */
+            }
+            .order-btn {
                 padding: 10px;
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+            .popular-badge {
+                font-size: 0.8rem;
+                padding: 4px 15px;
+                top: -12px;
+            }
+
+            /* البانر المخصص */
+            .custom-banner {
+                padding: 20px 15px;
+                margin-bottom: 25px;
+                border-radius: 15px;
+            }
+            .custom-banner h2 {
+                font-size: 1.3rem;
+            }
+            .custom-banner h2 svg {
+                width: 22px;
+                height: 22px;
+            }
+            .custom-banner p {
+                font-size: 0.9rem;
             }
         }
     </style>
