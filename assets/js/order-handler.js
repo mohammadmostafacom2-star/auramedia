@@ -4,7 +4,7 @@
  * ====================================================================
  */
 // ضع رقم الواتساب الخاص بك هنا (مع رمز الدولة وبدون أصفار أو علامة +)
-const WHATSAPP_NUMBER = "963955420910"; 
+const WHATSAPP_NUMBER = "963900000000"; 
 
 // إعدادات Cloudinary
 const CLOUDINARY_CLOUD_NAME = "ddoumoqfo";
@@ -137,7 +137,7 @@ fileInput.addEventListener('change', async function() {
     // 1. التحقق من الحماية (20 صورة/ساعة)
     if (isUploadLimitExceeded()) {
         alert("لقد تجاوزت الحد المسموح للرفع (20 صورة في الساعة). يرجى المحاولة لاحقاً.");
-        this.value = ''; // مسح الملف المختار
+        this.value = ''; 
         return;
     }
 
@@ -169,14 +169,14 @@ fileInput.addEventListener('change', async function() {
 
         fileUploadText.textContent = '☁️ جاري رفع الصورة للسحابة...';
         const imageUrl = await uploadToCloudinary(compressedFile);
-        uploadedImageUrl = imageUrl; // حفظ الرابط
+        uploadedImageUrl = imageUrl; 
 
-        // تحديث الواجهة
+        // تحديث الواجهة (بدون أيقونة الصح كما طلبت)
         fileNameDisplay.textContent = `تم الرفع بنجاح: ${file.name}`;
         fileDisplayContainer.style.display = 'flex';
         fileUploadText.textContent = 'اضغط لرفع صورة الإشعار';
         submitBtn.disabled = false;
-        recordUploadTimestamp(); // تسجيل وقت الرفع الناجح
+        recordUploadTimestamp(); 
 
     } catch (error) {
         console.error('خطأ في الضغط أو الرفع:', error);
@@ -229,7 +229,6 @@ function isUploadLimitExceeded() {
     const oneHourAgo = now - (60 * 60 * 1000);
     let timestamps = JSON.parse(localStorage.getItem('uploadTimestamps')) || [];
     
-    // فلترة الأوقات القديمة
     timestamps = timestamps.filter(ts => ts > oneHourAgo);
     localStorage.setItem('uploadTimestamps', JSON.stringify(timestamps));
 
@@ -249,11 +248,27 @@ orderForm.addEventListener('submit', function(e) {
         return;
     }
 
-    // جمع البيانات
-    const duration = durationSelect.value;
-    let finalDurationText = duration === "20+" ? `${customDaysInput.value} يوم (مخصص)` : `${duration} أيام`;
+    // 1. حساب السعر النهائي للرسالة
+    const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+    const baseUsdPrice = parseFloat(selectedOption.dataset.usd);
+    let finalPriceUsd = baseUsdPrice;
     
+    const duration = durationSelect.value;
+    let finalDurationText = "";
+
+    if (duration === "20+") {
+        const customDays = parseInt(customDaysInput.value) || 20;
+        finalDurationText = `${customDays} يوم (مخصص)`;
+        finalPriceUsd = baseUsdPrice * customDays;
+        finalPriceUsd = parseFloat(finalPriceUsd.toFixed(2)); // إزالة الأصفار الزائدة
+    } else {
+        finalDurationText = `${duration} أيام`;
+    }
+
     const packageType = packageSelect.value;
+    const packageWithPrice = `${packageType} / ${finalPriceUsd}$`;
+
+    // 2. جمع باقي البيانات
     const pageLink = document.getElementById('pageLink').value;
     const postLink = document.getElementById('postLink').value;
     const adminText = document.getElementById('adminId').options[document.getElementById('adminId').selectedIndex].text;
@@ -274,18 +289,22 @@ orderForm.addEventListener('submit', function(e) {
         locations = checkedCities.join('، ');
     }
 
-    // تنسيق الرسالة مع رابط الصورة
-    const message = `
-مرحباً Aura Media، أود تقديم طلب تمويل جديد 🚀
+    // 3. تنسيق الرسالة (Layout)
+    const message = `مرحباً Aura Media، أود تقديم طلب تمويل جديد 🚀
 
 📦 *تفاصيل الباقة:*
 - المدة: ${finalDurationText}
-- نوع الباقة: ${packageType}
+- نوع الباقة: ${packageWithPrice}
 
 🔗 *الروابط والمعرفات:*
-- رابط الصفحة: ${pageLink}
-- رابط المنشور: ${postLink}
-- المشرف المضاف: ${adminText}
+- رابط الصفحة:
+${pageLink}
+
+- رابط المنشور:
+${postLink}
+
+- المشرف المضاف:
+${adminText}
 
 🎯 *الاستهداف:*
 - العمر: من ${ageMin} إلى ${ageMax}
@@ -294,15 +313,18 @@ orderForm.addEventListener('submit', function(e) {
 
 💳 *الدفع:*
 - طريقة الدفع: ${paymentMethod}
-- رابط إثبات الدفع: ${uploadedImageUrl}
-    `.trim();
+- رابط إثبات الدفع:
+${uploadedImageUrl}`;
 
-    // فتح رابط واتساب
+    // 4. التنبيه والتحويل
+    alert("تم تجهيز طلبك بنجاح!\n\nسيتم تحويلك الآن إلى واتساب لإرسال الطلب.");
+
+    // استخدام encodeURIComponent لضمان عدم تشوه الأيقونات والنصوص
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
 
-// باقي الدوال (التحكم بالعمر والمواقع) تبقى كما هي
+// باقي الدوال (التحكم بالعمر والمواقع)
 const ageMinInput = document.getElementById('ageMin');
 const ageMaxInput = document.getElementById('ageMax');
 const btnMinMinus = document.getElementById('ageMinMinus');
