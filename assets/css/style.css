@@ -875,6 +875,45 @@ a:hover {
 }
 
 /* =========================================
+   تنسيقات شبكة أهداف التمويل (Promotion Goals)
+   ========================================= */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.goal-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.goal-option:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.goal-option input[type="radio"] {
+    display: none;
+}
+
+.goal-option:has(input[type="radio"]:checked) {
+    border-color: var(--secondary-color);
+    background: #f0f7ff;
+    color: var(--secondary-color);
+}
+
+/* =========================================
    تنسيقات تفاصيل الدفع (الصور والعناوين)
    ========================================= */
 .payment-details-container {
@@ -1162,6 +1201,16 @@ a:hover {
     .copy-icon svg {
         width: 16px;
         height: 16px;
+    }
+
+    /* أهداف التمويل للموبايل */
+    .goals-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .goal-option {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 
     /* تفاصيل الدفع للموبايل */
