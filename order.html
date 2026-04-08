@@ -574,6 +574,47 @@
                                         <span>USDT BEP20</span>
                                     </label>
                                 </div>
+
+                                <!-- حاوية تفاصيل الدفع (تظهر عند اختيار طريقة الدفع) -->
+                                <div id="payment-details-container" class="payment-details-container" style="display: none;">
+                                    
+                                    <!-- تفاصيل شام كاش -->
+                                    <div id="shamcash-details" class="payment-detail-box" style="display: none;">
+                                        <img src="assets/images/shamcash.jpg" alt="ShamCash QR" class="payment-qr-img" onerror="this.style.display='none'">
+                                        <div class="payment-address-box">
+                                            <span class="payment-address" id="shamcash-address">bee30c2f8121c572e881b8a81e50d05d</span>
+                                        </div>
+                                        <div class="payment-actions">
+                                            <button type="button" class="action-btn copy-address-btn" data-copy-target="shamcash-address">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                                نسخ المعرف
+                                            </button>
+                                            <a href="assets/images/shamcash.jpg" download="shamcash.jpg" class="action-btn download-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                                تحميل الصورة
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- تفاصيل USDT -->
+                                    <div id="usdt-details" class="payment-detail-box" style="display: none;">
+                                        <img src="assets/images/usdt.jpg" alt="USDT QR" class="payment-qr-img" onerror="this.style.display='none'">
+                                        <div class="payment-address-box">
+                                            <span class="payment-address" id="usdt-address">0xed451da135df3a4ca8f277800a1ff5201318f6b3</span>
+                                        </div>
+                                        <div class="payment-actions">
+                                            <button type="button" class="action-btn copy-address-btn" data-copy-target="usdt-address">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                                نسخ العنوان
+                                            </button>
+                                            <a href="assets/images/usdt.jpg" download="usdt.jpg" class="action-btn download-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                                تحميل الصورة
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
