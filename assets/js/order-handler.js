@@ -121,6 +121,67 @@ customDaysInput.addEventListener('blur', function() {
 
 /**
  * ====================================================================
+ * منطق إظهار تفاصيل الدفع (الصور والعناوين)
+ * ====================================================================
+ */
+const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+const paymentDetailsContainer = document.getElementById('payment-details-container');
+const shamcashDetails = document.getElementById('shamcash-details');
+const usdtDetails = document.getElementById('usdt-details');
+
+paymentRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+        paymentDetailsContainer.style.display = 'block';
+        
+        if (this.value === 'شام كاش') {
+            shamcashDetails.style.display = 'block';
+            usdtDetails.style.display = 'none';
+        } else if (this.value === 'USDT BEP20') {
+            shamcashDetails.style.display = 'none';
+            usdtDetails.style.display = 'block';
+        }
+    });
+});
+
+/**
+ * ====================================================================
+ * منطق نسخ عناوين الدفع
+ * ====================================================================
+ */
+const copyAddressBtns = document.querySelectorAll('.copy-address-btn');
+
+copyAddressBtns.forEach(btn => {
+    btn.addEventListener('click', async function() {
+        const targetId = this.getAttribute('data-copy-target');
+        const textToCopy = document.getElementById(targetId).textContent;
+        const originalHTML = this.innerHTML;
+
+        try {
+            await navigator.clipboard.writeText(textToCopy);
+            
+            // تغيير شكل الزر مؤقتاً للدلالة على النجاح
+            this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> تم النسخ ✓';
+            this.style.background = '#dcfce3';
+            this.style.color = '#166534';
+            this.style.borderColor = '#bbf7d0';
+            
+            // إعادة الزر لشكله الطبيعي بعد ثانيتين
+            setTimeout(() => {
+                this.innerHTML = originalHTML;
+                this.style.background = '';
+                this.style.color = '';
+                this.style.borderColor = '';
+            }, 2000);
+            
+        } catch (err) {
+            console.error('فشل النسخ: ', err);
+            alert('حدث خطأ أثناء النسخ، يرجى التحديد والنسخ يدوياً.');
+        }
+    });
+});
+
+/**
+ * ====================================================================
  * منطق ضغط ورفع الصور الذكي
  * ====================================================================
  */
