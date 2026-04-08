@@ -159,13 +159,11 @@ copyAddressBtns.forEach(btn => {
         try {
             await navigator.clipboard.writeText(textToCopy);
             
-            // تغيير شكل الزر مؤقتاً للدلالة على النجاح
             this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> تم النسخ ✓';
             this.style.background = '#dcfce3';
             this.style.color = '#166534';
             this.style.borderColor = '#bbf7d0';
             
-            // إعادة الزر لشكله الطبيعي بعد ثانيتين
             setTimeout(() => {
                 this.innerHTML = originalHTML;
                 this.style.background = '';
@@ -195,14 +193,12 @@ fileInput.addEventListener('change', async function() {
     const file = this.files[0];
     if (!file) return;
 
-    // 1. التحقق من الحماية (20 صورة/ساعة)
     if (isUploadLimitExceeded()) {
         alert("لقد تجاوزت الحد المسموح للرفع (20 صورة في الساعة). يرجى المحاولة لاحقاً.");
         this.value = ''; 
         return;
     }
 
-    // 2. التحقق من الحجم والنوع
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
         alert("صيغة الملف غير مدعومة. يرجى رفع صورة من نوع JPG, PNG, أو WebP.");
@@ -215,7 +211,6 @@ fileInput.addEventListener('change', async function() {
         return;
     }
 
-    // 3. الضغط والرفع
     try {
         fileUploadText.textContent = '⏳ جاري ضغط الصورة...';
         submitBtn.disabled = true;
@@ -232,7 +227,6 @@ fileInput.addEventListener('change', async function() {
         const imageUrl = await uploadToCloudinary(compressedFile);
         uploadedImageUrl = imageUrl; 
 
-        // تحديث الواجهة
         fileNameDisplay.textContent = `تم الرفع بنجاح: ${file.name}`;
         fileDisplayContainer.style.display = 'flex';
         fileUploadText.textContent = 'اضغط لرفع صورة الإشعار';
@@ -321,7 +315,7 @@ orderForm.addEventListener('submit', function(e) {
         const customDays = parseInt(customDaysInput.value) || 20;
         finalDurationText = `${customDays} يوم (مخصص)`;
         finalPriceUsd = baseUsdPrice * customDays;
-        finalPriceUsd = parseFloat(finalPriceUsd.toFixed(2)); // إزالة الأصفار الزائدة
+        finalPriceUsd = parseFloat(finalPriceUsd.toFixed(2));
     } else {
         finalDurationText = `${duration} أيام`;
     }
@@ -332,6 +326,7 @@ orderForm.addEventListener('submit', function(e) {
     // 2. جمع باقي البيانات
     const pageLink = document.getElementById('pageLink').value;
     const postLink = document.getElementById('postLink').value;
+    const promoGoal = document.querySelector('input[name="promoGoal"]:checked').value; // جلب الهدف المختار
     const adminText = document.getElementById('adminId').options[document.getElementById('adminId').selectedIndex].text;
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
     const ageMin = document.getElementById('ageMin').value;
@@ -356,6 +351,7 @@ orderForm.addEventListener('submit', function(e) {
 *تفاصيل الباقة:*
 - المدة: ${finalDurationText}
 - نوع الباقة: ${packageWithPrice}
+- الهدف من التمويل: ${promoGoal}
 
 *الروابط والمعرفات:*
 - رابط الصفحة:
@@ -380,7 +376,6 @@ ${uploadedImageUrl}`;
     // 4. التنبيه والتحويل
     alert("تم تجهيز طلبك بنجاح!\n\nسيتم تحويلك الآن إلى واتساب لإرسال الطلب.");
 
-    // استخدام encodeURIComponent لضمان عدم تشوه النصوص
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
